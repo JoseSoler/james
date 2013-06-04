@@ -1,6 +1,6 @@
 WILLKOMMEN to the James Zanox project !! The meeting assistant.
 
-This project is based in maven for the building (and deploy) process, hence you need installed on your computer:
+This project is based in maven for the build (and deploy) process, hence you need installed on your computer:
 
 0) As this is a Java project, you need of course JDK6 or latest.
 
