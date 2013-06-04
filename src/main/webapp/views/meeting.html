@@ -1,0 +1,43 @@
+<section id="Overview">
+	<div>Logged as: &nbsp;&nbsp; </div>
+	<div style="color:#ff9900"> {{yourName}}</div>
+	<br/><br/>
+	<div>Meeting id: &nbsp;&nbsp;</div>
+	<div style="color:#ff9900"> {{meetingId}}</div>
+</section>
+<br/>
+<hr color="#ccc">
+<br/>
+<section id="MeetingStatus">
+	<div style="margin-right:20px"><strong>Mood</strong></div>
+	<div><strong>Forecast</strong></div><br/>
+	<div style="margin-right:20px"><img src="{{meetingMood}}" alt="Mood" height="42" width="42"></div>
+	<div><img src="{{meetingMoodForecast}}" alt="Forecast" height="42" width="42"></div><br/>
+</section><br/>
+<p><hr color="#ccc"></p>
+<section id="CommentsList">
+	  <ul>
+		<li ng-repeat="comment in comments">
+		  {{comment.text}}<br/>
+		  by {{comment.author}} at {{comment.datetime_}}
+		  <hr width="100%">
+		</li>
+	  </ul>
+</section>
+
+<section id="Actions">
+	<section>
+		<a ng-click="changeMood()">
+			<img src="{{currentMood}}" alt="Current Mood" height="42" width="42">
+			<img src="{{currentNeed}}" alt="Current Need" height="42" width="42">
+		</a>
+		<span style="padding-left:5px">&nbsp </span>
+	</section>
+	
+	<section>
+	<form ng-submit="addComment()">
+		<input class="inputForm" type="text" ng-model="commentText" size="10" required placeholder="New comment">
+		<input type="image" src="img/action_btn/bell_btn.png"> 
+	</form>
+	</section>
+</section>
