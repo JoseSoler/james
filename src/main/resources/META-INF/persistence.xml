@@ -20,7 +20,7 @@
         <property name="hibernate.hbm2ddl.auto" value="create"/>
  
         <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-        <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:james_db"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:james_db;create=true"/>
         
         <property name="javax.persistence.jdbc.user" value="james_app"/>
         <property name="javax.persistence.jdbc.password" value="james_app"/>

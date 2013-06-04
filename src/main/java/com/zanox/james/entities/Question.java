@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,7 +22,6 @@ public class Question {
     
     private String questionText;
     
-    @OneToMany
     private List<Answer> answers;
     
 
@@ -47,9 +45,11 @@ public class Question {
         return answers;
     }
 
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public void addAnswer(Answer anAnswer) {
+    
+       answers.add(anAnswer);
     }
+    
     
     
     

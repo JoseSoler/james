@@ -7,7 +7,6 @@ package com.zanox.james.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,8 +21,6 @@ public class Answer {
     
     private String answerText;
     
-    
-    @ManyToOne()
     private Question question;
 
     
