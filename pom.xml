@@ -78,7 +78,44 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.4.Final</version>
+                                           
+                <executions>
+                    <execution>
+                        
+                        <id>deploy_ear</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                    
+                    <!--
+                     <execution>
+                         <id>deploy_mssql_jdbc</id>
+                         <phase>install</phase>
+                         <goals>
+                             <goal>deploy-artifact</goal>
+                         </goals>
+                         <configuration>
+                              <groupId>com.microsoft.sqlserver</groupId>
+                               <artifactId>sqljdbc4</artifactId>
+                               <version>3.0</version>
+                         </configuration>
+                     </execution>
+                    -->
+                 
+                   
+                </executions>
+            
+            </plugin>
         </plugins>
+        
+        <finalName>james</finalName>
     </build>
 
 </project>
