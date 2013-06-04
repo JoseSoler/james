@@ -1,9 +1,23 @@
 <form ng-submit="connect()">
-	<section>
-		Question Id: <input class="inputForm" type="text" ng-model="questionId" size="30" requiredplaceholder="provide the question Id">
-	</section>
-	<section>
-		Answer: <input class="inputForm" type="text" ng-model="answer" placeholder="Enter an answer here">
-		<input type="image" src="img/action_btn/bell_btn.png">
-	</section>
+	<div id="main">
+    <div id="header">
+    </div> 
+    <div class="clear">
+    </div>
+    <div id="content">      
+        <h1>Aspen 2013</h1> 
+			<p>Question-ID:</p>
+			<input class="meeting_form" ng-model="questionId" requiredplaceholder="provide the question Id"/>
+			<p>What is your answer?</p>
+			<input class="meeting_form" ng-model="answer" placeholder="Enter an answer here"/>
+			<br/><br/>
+			<div id="bell_btn"><input type="image" src="img/big_bell_btn.png"></div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+
+
+
+
 </form>
