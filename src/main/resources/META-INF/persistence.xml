@@ -4,9 +4,9 @@
                                  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     
-    <persistence-unit name="james_persistence" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="james_persistence" transaction-type="JTA">
   
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+         <jta-data-source>java:jboss/datasources/james_derby_datasource</jta-data-source>  
         
         <class>com.zanox.james.entities.Question</class>
         <class>com.zanox.james.entities.Answer</class>
@@ -16,19 +16,14 @@
         
     <properties>
 
-        <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
-        <property name="hibernate.hbm2ddl.auto" value="create"/>
- 
-        <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-        <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:james_db;create=true"/>
-        
-        <property name="javax.persistence.jdbc.user" value="james_app"/>
-        <property name="javax.persistence.jdbc.password" value="james_app"/>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
+        <property name="hibernate.show_sql" value="true"/>
+        <property name="hibernate.format_sql" value="true" />
       
-        
-
     </properties>
     
     
     </persistence-unit>
+    
+     
 </persistence>

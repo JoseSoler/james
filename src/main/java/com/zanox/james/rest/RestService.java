@@ -4,11 +4,17 @@
  */
 package com.zanox.james.rest;
 
+import com.zanox.james.beans.JamesPersistenceService;
+import com.zanox.james.exceptions.UnacceptedAnswerException;
+import com.zanox.james.exceptions.UnexistentQuestionException;
+
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -18,13 +24,29 @@ import javax.ws.rs.core.MediaType;
 @Path("")
 public class RestService {
     
+    @Inject
+    private JamesPersistenceService jps;
+    
+    
+    private Logger log = Logger.getLogger(RestService.class);
    
     @GET 
     @Path("getQuestion")
     @Produces(MediaType.TEXT_PLAIN)
     public String getQuestionById(@QueryParam("id") Integer id){
+       
+        try {
         
-        return "Question ID: " + id + " ???";
+            return jps.getQuestion(id);
+        
+        } catch (UnexistentQuestionException ex) {
+           
+            log.warn("Someone trying to get an unexistent question Id !! " + id);
+            
+            return "Unexistent Question Id";
+            
+        }
+        
     }
     
     
@@ -33,16 +55,31 @@ public class RestService {
     @Produces(MediaType.TEXT_PLAIN)
     public String setAnswer(@QueryParam("qId") Integer id, @QueryParam("answer") String answer ){
         
-        return validateAnswer(id, answer);
+        try {
+            
+            jps.setAnswer(id, answer);
+            return "OK";
+        
+        } catch (UnacceptedAnswerException ex) {
+           
+            String msg = "Error while trying to store the answer: " + answer;
+            log.warn(msg);
+            
+            return msg;
+        
+        } catch (UnexistentQuestionException ex) {
+            
+            String msg = "Someone trying to answer an unexistent question Id !! :\" + id ";
+            
+            log.warn(msg);
+            return msg;
+        }
+        
+        
        
     }
 
-    private String validateAnswer(Integer id, String answer) {
-        
-        if( id == null || answer == null || answer.length() == 0) return "KO";
-        else return "OK";
-        
-    }
+   
 
    
 }

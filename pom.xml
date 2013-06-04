@@ -38,22 +38,24 @@
             <version>1.2.17</version>
             <scope>compile</scope>
         </dependency>
+        
+        
        
            
       
         <!-- DEPENDENCIES FOR TESTING -->  
         
-                      
-        <dependency>
+         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.8.2.2</version>
+            <version>10.9.1.0</version>
             <scope>test</scope>
-        </dependency>   
+        </dependency>       
+        
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
-            <version>10.8.2.2</version>
+            <version>10.9.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -123,6 +125,7 @@
                             
                                
                 <executions>
+                    
                     <execution>
                         
                         <id>deploy_ear</id>
@@ -132,7 +135,7 @@
                             <goal>deploy</goal>
                         </goals>
                         
-                        <!-- comment out the configuration to deploy to localhost -->
+                        <!-- comment out the configuration to deploy to localhost 
                         <configuration>
                             <hostname>l-lab-01.zanox-live.de</hostname>
                             <username>jamesDeployer</username>
@@ -140,22 +143,47 @@
                             <skip>false</skip>
                         </configuration>    
                         
+                        -->
                     </execution>
                     
-                    <!--
-                     <execution>
-                         <id>deploy_mssql_jdbc</id>
-                         <phase>install</phase>
-                         <goals>
-                             <goal>deploy-artifact</goal>
-                         </goals>
-                         <configuration>
-                              <groupId>com.microsoft.sqlserver</groupId>
-                               <artifactId>sqljdbc4</artifactId>
-                               <version>3.0</version>
-                         </configuration>
-                     </execution>
-                    -->
+                    <execution>
+                        <id>deploy_mssql_jdbc</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>org.apache.derby</groupId>
+                            <artifactId>derbyclient</artifactId>
+                            <version>10.9.1.0</version>
+                        </configuration>
+                    </execution>
+                    
+                    <!-- Add a data source -->
+                    <execution>
+                        <id>add-datasource</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <address>subsystem=datasources,data-source=james_derby_datasource</address>
+                            <resource>
+                                <enableResource>true</enableResource>
+                                <properties>
+                                    <connection-url>jdbc:derby://localhost:1527/james_db;create=true</connection-url>
+                                    <jndi-name>java:jboss/james_derby_datasource</jndi-name>
+                                    <enabled>true</enabled>
+                                    <enable>true</enable>
+                                    <pool-name>jamesPool</pool-name>
+                                    <user-name>james</user-name>
+                                    <password>james</password>
+                                    <driver-name>derbyclient-10.9.1.0.jar</driver-name>
+                                    <use-ccm>false</use-ccm>
+                                </properties>
+                            </resource>
+                        </configuration>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                    </execution>
                  
                    
                 </executions>
