@@ -18,6 +18,10 @@ meetingMoodApp.config(function($routeProvider) {
         templateUrl: 'views/mood.html'
       }).
       when('/aspen', {
+        controller: 'QuestionConnectionController',
+        templateUrl: 'views/questionconnection.html'
+      }).
+      when('/question', {
         controller: 'QuestionController',
         templateUrl: 'views/question.html'
       }).
