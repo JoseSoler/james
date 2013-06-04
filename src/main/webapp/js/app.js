@@ -20,6 +20,9 @@ meetingMoodApp.config(function($routeProvider) {
       when('/aspen', {
         controller: 'QuestionController',
         templateUrl: 'views/question.html'
+      }).
+      when('/questionsuccess', {
+        templateUrl: 'views/questionsuccess.html'
       });
 	
 });
