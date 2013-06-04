@@ -15,10 +15,20 @@
     </properties>
 
     <dependencies>
+        
+                   
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>1.0.0.Final</version>
+            <type>pom</type>
+            <scope>provided </scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.1.7.Final</version>
             <scope>provided</scope>
         </dependency>
         
@@ -28,7 +38,34 @@
             <version>1.2.17</version>
             <scope>compile</scope>
         </dependency>
+       
+           
+      
+        <!-- DEPENDENCIES FOR TESTING -->  
         
+                      
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.8.2.2</version>
+            <scope>test</scope>
+        </dependency>   
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.8.2.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- DEPENDENCIES FOR TESTING -->
+        
+       
     </dependencies>
 
     <build>
@@ -83,15 +120,30 @@
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.4.Final</version>
-                                           
+                            
+                               
                 <executions>
                     <execution>
                         
                         <id>deploy_ear</id>
                         <phase>install</phase>
+                        
                         <goals>
                             <goal>deploy</goal>
                         </goals>
+                        
+                        <!-- comment out the configuration to deploy to localhost -->
+                        <configuration>
+                            
+                            <hostname>l-lab-01.zanox-live.de</hostname>
+                           
+                            <!--
+                            <name>jamesDeployer</name>
+                            <password>james123</password>
+                            -->
+
+                        </configuration>    
+                        
                     </execution>
                     
                     <!--
