@@ -1,0 +1,38 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>James Cloud</title>
+		<script src="js/jquery-1.2.6.min.js" type="text/javascript" charset="utf-8"></script> 
+		<script src="js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
+	</head>
+    <body>
+		<script>
+		$(document).ready(function() { 
+ 
+		  $("#tagcloud a").tagcloud({ 
+			 size: { 
+			   start: 10, 
+			   end: 50, 
+			   unit: 'px' 
+			 }, 
+			 color: { 
+			   start: "#CDE", 
+			   end: "#FS2" 
+			 } 
+		  }); 
+		}); 
+		</script>
+		
+		<div id="tagcloud"> 
+		  <a href="#" rel="50">twitter</a> 
+		  <a href="#" rel="63">dropbox</a> 
+		  <a href="#" rel="2">microsoft word</a> 
+		  <a href="#" rel="1">facebook</a> 
+		  <a href="#" rel="7">google docs</a> 
+		  <a href="#" rel="13">yahoo</a> 
+		  <a href="#" rel="12">instagram</a> 
+		  </div> 
+	
+    </body>
+</html>

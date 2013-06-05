@@ -1,0 +1,94 @@
+body{
+	background-color:#4c4c4c;
+	width:270px;
+	height:100%;
+	font-family:Arial,sans-serif;
+	color:white;
+	font-size: 14px;
+	margin:0;
+}
+#logo{
+	position:absolute;
+	top:5px;
+	left:5px;
+	width:70px;
+	height:70px;
+}
+.container{
+	float:left;
+	position:absolute;
+	top:82px;
+	left:10px;
+	width:270px;
+	height: 85%;
+	margin:0px;
+}
+.inputForm{
+-moz-border-radius:5px; 
+-webkit-border-radius: 5px; 
+-khtml-border-radius: 5px; 
+border-radius: 5px; 
+border: 3px solid #ed9e66;
+background-color:#c5c5c5;
+padding:5px;
+}
+#action_row_1 {
+	width:270px;
+	height:90px;
+	margin: 0 auto;
+	float:left;
+}
+#action_row_2 {
+	width:270px;
+	height:90px;
+	margin: 0 auto;
+	float:left;
+}
+#Overview div{
+	float:left;
+	height:auto;
+}
+##MeetingStatus{
+	width:270px;
+	height:80px;
+}
+#MeetingStatus div{
+	float:left;
+	height:auto;
+}
+
+#CommentsList{
+	width:270px;
+	margin:0 auto;
+	-moz-border-radius:5px; 
+	-webkit-border-radius: 5px; 
+	-khtml-border-radius: 5px; 
+	border-radius: 5px; 
+	border: 3px solid #ed9e66;
+	background-color:#717171;
+	padding:0;
+	height:40%;
+	overflow:auto;
+}
+
+#CommentsList ul{
+	padding:0px;
+	width:100%;
+	background:#ccc;
+	font-size:10px;
+	color:#444;
+	list-style:none;
+}
+#CommentsList ul li{
+	padding:0px;
+}
+#Actions{
+	position:absolute;
+    bottom:0px;
+    width: 100%;
+    margin: 0;
+}
+#Actions section{
+	float:left;
+	height:auto;
+}
