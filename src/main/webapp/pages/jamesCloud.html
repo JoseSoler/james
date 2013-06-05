@@ -10,28 +10,92 @@
 		<script>
 		$(document).ready(function() { 
  
-		  $("#tagcloud a").tagcloud({ 
+			
+			
+		  $("#tagcloud tag").tagcloud({ 
 			 size: { 
-			   start: 10, 
-			   end: 50, 
+			   start: 30, 
+			   end: 100, 
 			   unit: 'px' 
 			 }, 
 			 color: { 
-			   start: "#CDE", 
+			   start: "#FS2", 
 			   end: "#FS2" 
 			 } 
-		  }); 
+		  });
+		  
+		  /*
+		  $.getJSON("http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1", function (json) {
+			alert(json.result);
+			$.each(json.list, function (i, fb) {
+				alert(fb.result);
+			});
+			});
+		  */
+			
+			$.ajax(
+			{
+				type: "GET",
+				dataType: "json",
+				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
+				success: function (data) 
+				{
+					//alert("Halsdfdsfdsalo");
+					
+					$.each(data,function(i,j){
+						
+						content ='<tag rel="9">microsft word</tag>';
+						$('#tagcloud').append(content);
+					});
+					
+					//var json = '{"result":true,"count":1}',
+					//var obj = JSON.parse(data);
+					//alert("Hallo");
+					//alert(data.Twitter);
+					//$('#response').append(data.property);
+				}
+			});
+			
+			
+			
+			
+		  
 		}); 
 		</script>
 		
-		<div id="tagcloud"> 
-		  <a href="#" rel="50">twitter</a> 
-		  <a href="#" rel="63">dropbox</a> 
+		
+		<ul>
+			<li> Twitter </li>
+			<li> Twitter1 </li>
+			<li> Twitter2 </li>
+		</ul>
+		
+		<div id="tagcloud" style="width:400px;margin:0 auto;height:200px"> 
+		  
+		  <tag rel="2">microsft word</tag>
+		  <tag rel="8">facebook</tag>
+		  <tag rel="23">twitter</tag>
+		  <tag rel="11">affe</tag>
+		  
 		  <a href="#" rel="2">microsoft word</a> 
-		  <a href="#" rel="1">facebook</a> 
+		  <a href="#" rel="1">facebook</a>
+		  
+		  
 		  <a href="#" rel="7">google docs</a> 
 		  <a href="#" rel="13">yahoo</a> 
 		  <a href="#" rel="12">instagram</a> 
+		  <a href="#" rel="50">twitter</a> 
+		  <a href="#" rel="63">eieruhr</a> 
+		  <a href="#" rel="111">affe</a> 
+		  <a href="#" rel="43">dropbox</a>
+		  <a href="#" rel="30">bananane</a> 
+		  <a href="#" rel="2">blabla</a> 
+		  
+		  <a href="#" rel="2">apfel</a> 
+		  <a href="#" rel="1">birne</a>
+		  
+		  <a href="#" rel="1">giraffe</a>
+		  
 		  </div> 
 	
     </body>
