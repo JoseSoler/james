@@ -7,7 +7,7 @@ function QuestionConnectionController($scope, $location, $http, $templateCache, 
     $scope.submitquestion = function() {
 			$scope.button=true;
 
-	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?qId=' + $scope.questionId, cache: $templateCache}).
+	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId, cache: $templateCache}).
             success(function(data, status, headers, config) {
 			
 				// Persist the question id
