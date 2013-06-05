@@ -10,7 +10,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	else
 		$scope.questionId = $rootScope.sharedVars.qId;
 	
-	$http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?qId=' + $scope.questionId, cache: $templateCache}).
+	$http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId, cache: $templateCache}).
 	success(function(data, status, headers, config) {
 		$scope.questionText = data.question;
 	}).
