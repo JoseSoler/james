@@ -1,6 +1,6 @@
 'use strict';
 
-meetingMoodApp.controller('MeetingController',
+JamesApp.controller('MeetingController',
 function MeetingController($scope, $location, MeetingManager) {
 
 	$scope.meetingMood = generateImgUrl("","","","grey");

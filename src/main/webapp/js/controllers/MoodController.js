@@ -1,6 +1,6 @@
 'use strict';
 
-meetingMoodApp.controller('MoodController',
+JamesApp.controller('MoodController',
 function MoodController($scope, $location) {
 
     $scope.changeMood = function(mood) {

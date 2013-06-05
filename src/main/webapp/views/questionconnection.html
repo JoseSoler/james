@@ -1,17 +1,7 @@
 <form ng-submit="submitquestion()">
-	<div id="main">
-    <div id="header">
-    </div> 
-    <div class="clear">
-    </div>
-    <div id="content">      
-        <h1>Aspen 2013</h1> 
-			<p>Question-ID:</p>
-			<input class="meeting_form" ng-model="questionId" requiredplaceholder="provide the question Id"/>
-			<br/><br/>
-			<div id="bell_btn"><input type="image" src="img/big_bell_btn.png"></div>
-        <div class="clear">
-        </div>
-    </div>
-</div>
+	<h1>Aspen 2013</h1> 
+	<p>Question-ID:</p>
+	<input class="meeting_form" ng-model="questionId" ng-required="true" requiredplaceholder="provide the question Id"/>
+	<br/><br/>
+	<div id="bell_btn"><input type="image" src="http://labs.zanox.com:8080/james/img/big_bell_btn.png" ng-disabled="button"></div>
 </form>
