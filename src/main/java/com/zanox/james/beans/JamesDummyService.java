@@ -18,22 +18,24 @@ public class JamesDummyService implements JamesService{
     private Logger log = Logger.getLogger(JamesDummyService.class);
 
     @Override
-    public String getAnswerSummaryForQuestionId(Integer id) throws UnexistentQuestionException {
+    public String getAnswerSummaryForQuestionId(String id) throws UnexistentQuestionException {
         
         log.info("Answer Summary called");
         
-        return "{ \"Twitter\":4, \"Facebook\":1, \"Zanox Marketplace\":2}";
+        return "{\"tags\": [ {\"answer\":\"Twitter\", \"count\":\"4\"},{\"answer\":\"Facebook\", \"count\":\"1\"},{\"answer\":\"Zanox Marketplace\", \"count\":\"2\"} ]}";
+      
+        
     }
 
     @Override
-    public String getQuestion(Integer questionId) throws UnexistentQuestionException {
+    public String getQuestion(String questionId) throws UnexistentQuestionException {
         
            log.info("Get Question Called");
            return "{ \"" + questionId + "\": \"What is your favorite app?\" }";
     }
 
     @Override
-    public String setAnswer(Integer questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException {
+    public String setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException {
         
         log.info("Set Answer Called");
         
