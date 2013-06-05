@@ -137,7 +137,7 @@
                             <goal>deploy</goal>
                         </goals>
                         
-                        <!-- comment out the configuration to deploy to localhost -->
+                        <!-- comment out the configuration to deploy to localhost  -->
                        
                          <configuration>
                             <hostname>l-lab-01.zanox-live.de</hostname>
@@ -145,6 +145,7 @@
                             <password>james123</password>
                             <skip>false</skip>
                         </configuration>    
+                        
                         
                        
                     </execution>
