@@ -13,10 +13,10 @@ import com.zanox.james.exceptions.UnexistentQuestionException;
  */
 public interface JamesService {
 
-    String getAnswerSummaryForQuestionId(Integer id) throws UnexistentQuestionException;
+    String getAnswerSummaryForQuestionId(String questionId) throws UnexistentQuestionException;
 
-    String getQuestion(Integer questionId) throws UnexistentQuestionException;
+    String getQuestion(String questionId) throws UnexistentQuestionException;
 
-    String setAnswer(Integer questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException;
+    String setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException;
     
 }
