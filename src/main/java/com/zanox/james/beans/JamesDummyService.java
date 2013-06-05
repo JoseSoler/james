@@ -39,7 +39,7 @@ public class JamesDummyService implements JamesService{
         
         if(questionId == null || answer == null|| answer.length() == 0) throw new UnacceptedAnswerException();
         
-        return "{ " + questionId + ": \"OK\" }";
+        return "{ \"" + questionId + "\": \"OK\" }";
         
         
     }
