@@ -9,26 +9,23 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         
         <class>com.zanox.james.entities.Question</class>
-        <class>com.zanox.james.entities.Answer</class>
-       
+        <class> com.zanox.james.entities.Answer</class>       
          
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         
-    <properties>
-
-        <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
-        <property name="hibernate.hbm2ddl.auto" value="create"/>
- 
-        <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-        <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:james_db;create=true"/>
+        <properties>
+            
+             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
+             <property name="hibernate.show_sql" value="true"/>
+             <property name="hibernate.format_sql" value="true" />
         
-        <property name="javax.persistence.jdbc.user" value="james_app"/>
-        <property name="javax.persistence.jdbc.password" value="james_app"/>
+            <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/james_db;create=true"/>
+            <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.connection.username" value="james_app"/>
+            <property name="hibernate.connection.password" value="james_app"/>
+        </properties>
       
-        
-
-    </properties>
-    
     
     </persistence-unit>
 </persistence>

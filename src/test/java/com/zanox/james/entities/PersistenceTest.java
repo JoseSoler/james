@@ -28,11 +28,7 @@ public class PersistenceTest {
         
         Question aQuestion = new Question();
         
-        Answer answer1 = new Answer();
-        Answer answer2 = new Answer();
-
         aQuestion.setQuestionText("What is your name?");
-        
         
 
         em.getTransaction().begin();

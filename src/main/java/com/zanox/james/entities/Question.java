@@ -4,10 +4,14 @@
  */
 package com.zanox.james.entities;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,9 +26,19 @@ public class Question {
     
     private String questionText;
     
+    @OneToMany( mappedBy = "questionId", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Answer> answers;
     
 
+    
+     public Question(String question) {
+    
+        this.questionText = question;
+    }
+    
+    public Question() {}
+    
+    
     public Integer getId() {
         return id;
     }
@@ -45,14 +59,21 @@ public class Question {
         return answers;
     }
 
-    public void addAnswer(Answer anAnswer) {
-    
-       answers.add(anAnswer);
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
-    
-    
-    
-    
-    
+
+    public void addAnswer(Answer anAnswer) {
+        
+        if(answers == null){
+            answers = new ArrayList<Answer>();
+        }
+            
+        this.answers.add(anAnswer);
+        
+    }
+
+      
+      
     
 }
