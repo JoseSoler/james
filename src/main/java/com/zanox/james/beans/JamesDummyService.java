@@ -29,7 +29,7 @@ public class JamesDummyService implements JamesService{
     public String getQuestion(Integer questionId) throws UnexistentQuestionException {
         
            log.info("Get Question Called");
-           return "{ " + questionId + ": \"What is your favorite app?\" }";
+           return "{ \"" + questionId + "\": \"What is your favorite app?\" }";
     }
 
     @Override
