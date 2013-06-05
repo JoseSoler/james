@@ -2,7 +2,8 @@
 
 JamesApp.controller('QuestionController',
 function QuestionController($scope, $location, $http, $templateCache, $rootScope) {
-
+	$scope.button=false;
+	
 	/* ----------- Initialize the question ----------- */
 	if ($rootScope.sharedVars.qId == "")
 		$scope.questionId = getCookie("currentQuestion");
@@ -20,6 +21,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	/* ------------------------------------------------ */
 	
     $scope.submitanswer = function() {
+			$scope.button=true;
 	
 	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/setAnswer?qId=' + $scope.questionId + '&answer=' + $scope.answer, cache: $templateCache}).
             success(function(data, status, headers, config) {
