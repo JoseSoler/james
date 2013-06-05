@@ -22,13 +22,6 @@
             <artifactId>jboss-javaee-6.0</artifactId>
             <version>1.0.0.Final</version>
             <type>pom</type>
-            <scope>provided </scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.1.7.Final</version>
             <scope>provided</scope>
         </dependency>
         
@@ -38,25 +31,36 @@
             <version>1.2.17</version>
             <scope>compile</scope>
         </dependency>
-       
-           
+        
+        
       
         <!-- DEPENDENCIES FOR TESTING -->  
         
-                      
+         
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.2.0.Final</version>
+            <scope> test </scope>
+        </dependency>
+        
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.8.2.2</version>
-            <scope>test</scope>
-        </dependency>   
-        <dependency>
+            <version>10.10.1.1</version>
+            <type>jar</type>
+              <scope> test </scope>
+        </dependency>
+        
+          <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
-            <version>10.8.2.2</version>
-            <scope>test</scope>
+            <version>10.10.1.1</version>
+            <type>jar</type>
+            <scope> test </scope>
         </dependency>
-        <dependency>
+        
+           <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
@@ -123,6 +127,7 @@
                             
                                
                 <executions>
+                    
                     <execution>
                         
                         <id>deploy_ear</id>
@@ -132,31 +137,62 @@
                             <goal>deploy</goal>
                         </goals>
                         
-                        <!-- comment out the configuration to deploy to localhost -->
-                        <configuration>
+                        <!-- comment out the configuration to deploy to localhost  -->
+                       
+                         <configuration>
                             <hostname>l-lab-01.zanox-live.de</hostname>
                             <username>jamesDeployer</username>
                             <password>james123</password>
                             <skip>false</skip>
                         </configuration>    
                         
+                        
+                       
                     </execution>
                     
-                    <!--
-                     <execution>
-                         <id>deploy_mssql_jdbc</id>
-                         <phase>install</phase>
-                         <goals>
-                             <goal>deploy-artifact</goal>
-                         </goals>
-                         <configuration>
-                              <groupId>com.microsoft.sqlserver</groupId>
-                               <artifactId>sqljdbc4</artifactId>
-                               <version>3.0</version>
-                         </configuration>
-                     </execution>
-                    -->
-                 
+                    <execution>
+                        <id>deploy_derby_driver</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>org.apache.derby</groupId>
+                            <artifactId>derbyclient</artifactId>
+                            <version>10.9.1.0</version>
+                        </configuration>
+                    </execution>
+                    
+                   
+                   <!--
+                    <execution>
+                        <id>add-datasource</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <address>subsystem=datasources,data-source=james_derby_datasource</address>
+                            <resource>
+                                <enableResource>true</enableResource>
+                                <properties>
+                                    <connection-url>jdbc:derby://localhost:1527/james_db;create=true</connection-url>
+                                    
+                                    <jndi-name>java:jboss/datasources/james_derby_datasource</jndi-name>
+                                     
+                                     
+                                    <enabled>true</enabled>
+                                    <enable>true</enable>
+                                    <pool-name>jamesPool</pool-name>
+                                    <user-name>james</user-name>
+                                    <password>james</password>
+                                    <driver-name>derbyclient-10.9.1.0.jar</driver-name>
+                                    <use-ccm>false</use-ccm>
+                                </properties>
+                            </resource>
+                        </configuration>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                    </execution>
+                 -->
                    
                 </executions>
             

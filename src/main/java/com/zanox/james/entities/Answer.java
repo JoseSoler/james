@@ -7,6 +7,7 @@ package com.zanox.james.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -23,9 +24,20 @@ public class Answer {
     private String answerText;
     
     
-    @ManyToOne()
-    private Question question;
+    private Integer questionId;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "questionId", referencedColumnName = "id")
+    private Question question;
+    
+    
+    
+    public Answer(String answer) {
+    
+        this.answerText = answer;
+    }
+    
+    public Answer() {}
     
     
     public Integer getId() {
@@ -44,6 +56,14 @@ public class Answer {
         this.answerText = answerText;
     }
 
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
     public Question getQuestion() {
         return question;
     }
@@ -51,8 +71,8 @@ public class Answer {
     public void setQuestion(Question question) {
         this.question = question;
     }
-   
     
     
-    
+
+     
 }
