@@ -1,22 +1,30 @@
 <!doctype html>
-<html lang="en" ng-app="meetingMoodApp">
+<html lang="en" ng-app="JamesApp">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+  <meta http-equiv="Expires" CONTENT="-1">
   <title>James</title>
   <link rel="stylesheet" href="css/all.css">
   <link rel="stylesheet" href="css/all-mobile.css">
 </head>
 <body>
-<div id="logo"><a href="index.html"><img border="0" src="img/logo.png"/></a></div>
-<div class="container">
 
-  <ng-view></ng-view>
-
+<div class="content">
+	<div id="main">
+		<div id="header"></div> 
+		<div class="clear"></div>
+		{{sharedVars.messages}}
+		<div id="content">
+		<ng-view></ng-view>
+		</div>
+		<div class="clear"></div>
+	</div>
 </div>
 
 <script src="lib/Scripts.js"></script>
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-resource.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/ConnectionController.js"></script>
 <script src="js/controllers/QuestionController.js"></script>

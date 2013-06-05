@@ -9,10 +9,53 @@
     <body>
 		<script>
 		$(document).ready(function() { 
- 
+ /*
+			$.ajax(
+			{
+				type: "GET",
+				dataType: "json",
+				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
+				success: function (data) 
+				{
+					//alert("Halsdfdsfdsalo");
+					$("#tagcloud").html('<tag rel="9">microsft word</tag>');
+					
+					//$.each(data,function(i,j){
+						
+					//	content ='<tag rel="9">microsft word</tag>';
+					//	$('#tagcloud').append(content);
+					//});
+					
+					//var json = '{"result":true,"count":1}',
+					//var obj = JSON.parse(data);
+					//alert("Hallo");
+					//alert(data.Twitter);
+					//$('#response').append(data.property);
+				}
+			});*/
 			
 			
-		  $("#tagcloud tag").tagcloud({ 
+			
+		  
+		  
+		}); 
+		
+		setInterval(function() {
+		
+			$.ajax(
+			{
+				type: "GET",
+				dataType: "json",
+				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
+				success: function (data) 
+				{
+					alert("Halsdfdsfdsalo");
+				}
+			});
+		
+			$("#tagcloud").html('<tag rel="100">microsft word</tag> <tag rel="50">twitter</tag>');
+			
+			$("#tagcloud tag").tagcloud({ 
 			 size: { 
 			   start: 30, 
 			   end: 100, 
@@ -22,53 +65,11 @@
 			   start: "#FS2", 
 			   end: "#FS2" 
 			 } 
-		  });
-		  
-		  /*
-		  $.getJSON("http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1", function (json) {
-			alert(json.result);
-			$.each(json.list, function (i, fb) {
-				alert(fb.result);
 			});
-			});
-		  */
-			
-			$.ajax(
-			{
-				type: "GET",
-				dataType: "json",
-				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
-				success: function (data) 
-				{
-					//alert("Halsdfdsfdsalo");
-					
-					$.each(data,function(i,j){
-						
-						content ='<tag rel="9">microsft word</tag>';
-						$('#tagcloud').append(content);
-					});
-					
-					//var json = '{"result":true,"count":1}',
-					//var obj = JSON.parse(data);
-					//alert("Hallo");
-					//alert(data.Twitter);
-					//$('#response').append(data.property);
-				}
-			});
-			
-			
-			
-			
-		  
-		}); 
+		}, 5000)
+
 		</script>
 		
-		
-		<ul>
-			<li> Twitter </li>
-			<li> Twitter1 </li>
-			<li> Twitter2 </li>
-		</ul>
 		
 		<div id="tagcloud" style="width:400px;margin:0 auto;height:200px"> 
 		  

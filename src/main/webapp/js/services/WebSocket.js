@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meetingMoodAppServices', [])
+angular.module('JamesAppServices', [])
 	.factory('WebSocket', function() {
 		return {
 			connect : function(url) {

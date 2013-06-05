@@ -5,6 +5,7 @@
 package com.zanox.james.rest;
 
 import com.zanox.james.beans.JamesDummyService;
+import com.zanox.james.beans.JamesJPAService;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.exceptions.UnexistentQuestionException;
 
@@ -31,7 +32,7 @@ public class RestService {
     @GET 
     @Path("getQuestion")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getQuestionById(@QueryParam("id") Integer id){
+    public String getQuestionById(@QueryParam("id") String id){
        
         try {
         
@@ -51,7 +52,7 @@ public class RestService {
     @GET 
     @Path("setAnswer")
     @Produces(MediaType.TEXT_PLAIN)
-    public String setAnswer(@QueryParam("qId") Integer id, @QueryParam("answer") String answer ){
+    public String setAnswer(@QueryParam("id") String id, @QueryParam("answer") String answer ){
         
         try {
             
@@ -79,7 +80,7 @@ public class RestService {
     @GET
     @Path("getAnswerSummary")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getAnswerSummaryForQuestionId(@QueryParam("id") Integer id) {
+    public String getAnswerSummaryForQuestionId(@QueryParam("id") String id) {
 
         try {
 

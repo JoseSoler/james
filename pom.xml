@@ -137,8 +137,14 @@
                             <goal>deploy</goal>
                         </goals>
                         
+<<<<<<< HEAD
                         <!-- comment out the configuration to deploy to localhost -->
                         <configuration>
+=======
+                        <!-- comment out the configuration to deploy to localhost  -->
+                       
+                         <configuration>
+>>>>>>> 6d94e289ac1822db50a078cdbe37b9a9a1e845d5
                             <hostname>l-lab-01.zanox-live.de</hostname>
                             <username>jamesDeployer</username>
                             <password>james123</password>
@@ -146,11 +152,14 @@
                         </configuration>    
                         
                         
+<<<<<<< HEAD
+=======
+                       
+>>>>>>> 6d94e289ac1822db50a078cdbe37b9a9a1e845d5
                     </execution>
                     
-                     <!-- Add a data source 
                     <execution>
-                        <id>deploy_mssql_jdbc</id>
+                        <id>deploy_derby_driver</id>
                         <phase>install</phase>
                         <goals>
                             <goal>deploy-artifact</goal>
@@ -163,6 +172,7 @@
                     </execution>
                     
                    
+                   <!--
                     <execution>
                         <id>add-datasource</id>
                         <phase>install</phase>
@@ -172,7 +182,10 @@
                                 <enableResource>true</enableResource>
                                 <properties>
                                     <connection-url>jdbc:derby://localhost:1527/james_db;create=true</connection-url>
-                                    <jndi-name>java:jboss/james_derby_datasource</jndi-name>
+                                    
+                                    <jndi-name>java:jboss/datasources/james_derby_datasource</jndi-name>
+                                     
+                                     
                                     <enabled>true</enabled>
                                     <enable>true</enable>
                                     <pool-name>jamesPool</pool-name>
@@ -187,7 +200,6 @@
                             <goal>add-resource</goal>
                         </goals>
                     </execution>
-                 
                  -->
                    
                 </executions>

@@ -1,6 +1,6 @@
 'use strict';
 
-meetingMoodApp.controller('ConnectionController',
+JamesApp.controller('ConnectionController',
 function ConnectionController($scope, $location) {
 
     $scope.yourName = "Anonymous_" + randomStr (5);

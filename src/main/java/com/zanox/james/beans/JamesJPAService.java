@@ -27,7 +27,7 @@ public class JamesJPAService implements JamesService {
     private Logger log = Logger.getLogger(JamesJPAService.class);
     
     @Override
-    public String getQuestion(Integer questionId) throws UnexistentQuestionException {
+    public String getQuestion(String questionId) throws UnexistentQuestionException {
         
        
         Question aQuestion = getQuestionById(questionId);
@@ -40,7 +40,7 @@ public class JamesJPAService implements JamesService {
     }
     
     @Override
-    public String setAnswer(Integer questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException  {
+    public String setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException  {
         
         Question aQuestion = getQuestionById(questionId);
         
@@ -70,7 +70,7 @@ public class JamesJPAService implements JamesService {
     
 
     @Override
-    public String getAnswerSummaryForQuestionId(Integer id) throws UnexistentQuestionException{
+    public String getAnswerSummaryForQuestionId(String id) throws UnexistentQuestionException{
         
          Question aQuestion = getQuestionById(id);
          
@@ -84,7 +84,7 @@ public class JamesJPAService implements JamesService {
     
     
     
-    private Question getQuestionById(Integer id){
+    private Question getQuestionById(String id){
         
          Question aQuestion = em.find(Question.class, id);
          
