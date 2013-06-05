@@ -1,8 +1,14 @@
 'use strict';
 
-var meetingMoodApp = angular.module('meetingMoodApp', ['ngResource', 'meetingMoodAppServices']);
+var JamesApp = angular.module('JamesApp', ['ngResource', 'JamesAppServices']);
 
-meetingMoodApp.config(function($routeProvider) {
+JamesApp.run(function ($rootScope) {
+    $rootScope.sharedVars = {
+        qId : ""
+    }
+});
+
+JamesApp.config(function($routeProvider) {
 
   $routeProvider.
       when('/', {
