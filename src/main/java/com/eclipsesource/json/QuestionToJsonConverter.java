@@ -52,4 +52,15 @@ public class QuestionToJsonConverter {
          
          return result.toString();
     }
+
+    public static String answerAccepted(Question question) {
+        
+         JsonObject result = new JsonObject();
+         
+         result.add(question.getId(), "OK");
+         
+         return result.toString();
+         
+            
+    }
 }

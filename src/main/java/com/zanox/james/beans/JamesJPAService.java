@@ -59,7 +59,8 @@ public class JamesJPAService implements JamesService {
         
             em.persist(aQuestion);
             
-             return "{ " + questionId + ": \"OK\" }";
+            return QuestionToJsonConverter.answerAccepted(aQuestion);
+            
         
         }catch(Exception ex){
             
@@ -94,7 +95,7 @@ public class JamesJPAService implements JamesService {
         
         em.persist(aQuestion);
         
-        return "{ " + questionId + ": \"OK\" }";
+        return QuestionToJsonConverter.answerAccepted(aQuestion);
         
         
     }

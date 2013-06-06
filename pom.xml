@@ -132,23 +132,18 @@
                     <password>james123</password>
                     <skip>false</skip>
                 </configuration>    
-                               
+                         
+                                     
                 <executions>
                     
                     <execution>
-                        
                         <id>deploy_war</id>
-                        <phase>install</phase>
-                        
                         <goals>
                             <goal>deploy</goal>
                         </goals>
-                        
-                       
-                       
                     </execution>
                     
-                         
+                   <!--
                     <execution>
                         <id>deploy_derby_driver</id>
                         <phase>package</phase>
@@ -187,7 +182,7 @@
                             <goal>add-resource</goal>
                         </goals>
                     </execution>
-                    
+                    -->
              
                 </executions>
             
