@@ -14,9 +14,9 @@
 }
 }
 
-@media all and (max-width: 350px) {   
+@media all and (max-width: 600px) {   
     body{font-size:24px; line-height: 1.2;}
-    #main {padding: 0px;width:340px;float:left;}
+    #main {padding: 0px;width:570px;float:left;}
     #header{margin:0 auto;}
 	h1{font-size:28px; color:#E0E0E0;}
 	.left{width:100%;float:none; }

@@ -13,8 +13,8 @@ JamesApp.config(function($routeProvider) {
 
   $routeProvider.
       when('/', {
-        controller: 'ConnectionController',
-        templateUrl: 'views/connection.html'
+        controller: 'QuestionConnectionController',
+        templateUrl: 'views/questionconnection.html'
       }).
       when('/meeting', {
         controller: 'MeetingController',

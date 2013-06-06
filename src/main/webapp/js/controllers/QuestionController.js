@@ -10,7 +10,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	else
 		$scope.questionId = $rootScope.sharedVars.qId;
 	
-	$http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId, cache: $templateCache}).
+	$http({method: 'GET', url: encodeURI('http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId), cache: $templateCache}).
 	success(function(data, status, headers, config) {
 		if (data.result == "success")
 		{
@@ -31,7 +31,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
     $scope.submitanswer = function() {
 			$scope.button=true;
 	
-	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/setAnswer?id=' + $scope.questionId + '&answer=' + $scope.answer, cache: $templateCache}).
+	        $http({method: 'GET', url: encodeURI('http://labs.zanox.com:8080/james/rest/setAnswer?id=' + $scope.questionId + '&answer=' + $scope.answer), cache: $templateCache}).
             success(function(data, status, headers, config) {
 				if (data.result == "success")
 				{
@@ -40,12 +40,14 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 				}
 				else
 				{
+					$scope.button=false;
 					$rootScope.sharedVars.messages = data.message;
 				}
             }).
             error(function(data, status, headers, config) {
                 $rootScope.sharedVars.messages = "Request failed";
                 $scope.status = status;
+				$scope.button=false;
             });	
     }
 	
