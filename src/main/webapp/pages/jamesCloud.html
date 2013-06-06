@@ -8,11 +8,28 @@
 	</head>
     <body>
 		<script>
-		$(document).ready(function() { 
+		//$(document).ready(function() { 
 
-		}); 
+		//}); 
+		
+		function GetURLParameter(sParam)
+		{
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++) 
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam) 
+				{
+					return sParameterName[1];
+				}
+			}
+		}
+
 		
 		setInterval(function() {
+		
+			
 		
 			$.ajax(
 			{
@@ -21,7 +38,7 @@
 				// jquery with dataType: "json" seems to parse the text, so we could also handle text and parse afterwards: 
 				// dataType: "text",
 				// var jsonData = JSON.parse(jsonText);
-				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
+				url: 'http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=' + GetURLParameter('id'),
 				success: function (jsonArrayObject) 
 				{
 					// jsonArrayObject looks like this: 
@@ -62,6 +79,8 @@
 			});
 							
 		}, 5000)
+		
+		
 
 		</script>
 		
