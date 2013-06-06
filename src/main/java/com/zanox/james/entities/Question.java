@@ -9,9 +9,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
@@ -19,14 +19,15 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@Table(name = "QUESTION", schema = "JAMES")
 public class Question {
     
-    @Id @GeneratedValue
-    private Integer id;
+    @Id
+    private String id;
     
     private String questionText;
     
-    @OneToMany( mappedBy = "questionId", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany( mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Answer> answers;
     
 
@@ -39,11 +40,11 @@ public class Question {
     public Question() {}
     
     
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -12,6 +12,7 @@ import com.zanox.james.entities.Question;
 import com.zanox.james.exceptions.UnexistentQuestionException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 
 /**
@@ -21,7 +22,7 @@ import org.apache.log4j.Logger;
 @Stateless
 public class JamesJPAService implements JamesService {
     
-    //@PersistenceContext(name = "james_persistence")
+    @PersistenceContext(unitName = "james_persistence")
     private EntityManager em;
     
     private Logger log = Logger.getLogger(JamesJPAService.class);
@@ -35,7 +36,7 @@ public class JamesJPAService implements JamesService {
         if(aQuestion == null) throw new UnexistentQuestionException();
         
         
-        return aQuestion.getQuestionText();
+        return QuestionToJsonConverter.convertQuestionToJson(aQuestion);
     
     }
     
@@ -50,13 +51,16 @@ public class JamesJPAService implements JamesService {
         Answer anAnswer = new Answer();
         anAnswer.setAnswerText(answer);
         
+        //build the relationships
+        anAnswer.setQuestion(aQuestion);
         aQuestion.addAnswer(anAnswer);
         
         try {
         
             em.persist(aQuestion);
             
-             return "{ " + questionId + ": \"OK\" }";
+            return QuestionToJsonConverter.answerAccepted(aQuestion);
+            
         
         }catch(Exception ex){
             
@@ -65,9 +69,6 @@ public class JamesJPAService implements JamesService {
         
         
     }
-    
-    
-    
 
     @Override
     public String getAnswerSummaryForQuestionId(String id) throws UnexistentQuestionException{
@@ -81,15 +82,38 @@ public class JamesJPAService implements JamesService {
         
     }
     
+  
+    @Override
+    public String createQuestion(String questionId, String question) {
+        
+        log.info("Going to create new question: " + questionId + " - " + question);
+        
+        Question aQuestion = new Question();
+        
+        aQuestion.setId(questionId);
+        aQuestion.setQuestionText(question);
+        
+        em.persist(aQuestion);
+        
+        return QuestionToJsonConverter.answerAccepted(aQuestion);
+        
+        
+    }
     
     
-    
-    private Question getQuestionById(String id){
+      private Question getQuestionById(String id){
         
          Question aQuestion = em.find(Question.class, id);
          
-         return aQuestion;
+         return  aQuestion;
     
     }
+
+
+   
+    
+    
+    
+    
     
 }
