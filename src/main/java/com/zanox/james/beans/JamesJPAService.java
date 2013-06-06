@@ -37,7 +37,7 @@ public class JamesJPAService implements JamesService {
         if(aQuestion == null) throw new UnexistentQuestionException();
         
         
-        return QuestionToJsonConverter.convertQuestionToJson(aQuestion);
+        return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
     
     }
     
@@ -61,7 +61,7 @@ public class JamesJPAService implements JamesService {
         
             em.persist(aQuestion);
             
-            return QuestionToJsonConverter.answerAccepted(aQuestion);
+            return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
             
         
         }catch(Exception ex){
@@ -100,7 +100,7 @@ public class JamesJPAService implements JamesService {
         
         em.persist(aQuestion);
         
-        return QuestionToJsonConverter.answerAccepted(aQuestion);
+        return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
         
         
     }

@@ -39,21 +39,32 @@ public class QuestionToJsonConverter {
         
        
     }
-    
-    public static String convertQuestionToJson(Question question){
+   
+   
+    public static String generateJsonError(Question question, String errorMessage) {
         
          JsonObject result = new JsonObject();
          
-         result.add(question.getId(), question.getQuestionText());
+         result.add("id", question.getId());
+         result.add("question", question.getQuestionText());
+         result.add("result", "error");
+         result.add("message", errorMessage);
+         
+         
          
          return result.toString();
+         
+            
     }
-
-    public static String answerAccepted(Question question) {
+    
+     public static String generateJsonSuccess(Question question) {
         
          JsonObject result = new JsonObject();
          
-         result.add(question.getId(), "OK");
+         result.add("id", question.getId());
+         result.add("question", question.getQuestionText());
+         result.add("result", "success");
+         
          
          return result.toString();
          
