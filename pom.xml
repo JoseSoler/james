@@ -136,26 +136,12 @@
                         <goals>
                             <goal>deploy</goal>
                         </goals>
-                        
-<<<<<<< HEAD
-                        <!-- comment out the configuration to deploy to localhost -->
-                        <configuration>
-=======
-                        <!-- comment out the configuration to deploy to localhost  -->
-                       
                          <configuration>
->>>>>>> 6d94e289ac1822db50a078cdbe37b9a9a1e845d5
                             <hostname>l-lab-01.zanox-live.de</hostname>
                             <username>jamesDeployer</username>
                             <password>james123</password>
                             <skip>false</skip>
                         </configuration>    
-                        
-                        
-<<<<<<< HEAD
-=======
-                       
->>>>>>> 6d94e289ac1822db50a078cdbe37b9a9a1e845d5
                     </execution>
                     
                     <execution>

@@ -9,35 +9,7 @@
     <body>
 		<script>
 		$(document).ready(function() { 
- /*
-			$.ajax(
-			{
-				type: "GET",
-				dataType: "json",
-				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
-				success: function (data) 
-				{
-					//alert("Halsdfdsfdsalo");
-					$("#tagcloud").html('<tag rel="9">microsft word</tag>');
-					
-					//$.each(data,function(i,j){
-						
-					//	content ='<tag rel="9">microsft word</tag>';
-					//	$('#tagcloud').append(content);
-					//});
-					
-					//var json = '{"result":true,"count":1}',
-					//var obj = JSON.parse(data);
-					//alert("Hallo");
-					//alert(data.Twitter);
-					//$('#response').append(data.property);
-				}
-			});*/
-			
-			
-			
-		  
-		  
+
 		}); 
 		
 		setInterval(function() {
@@ -45,59 +17,57 @@
 			$.ajax(
 			{
 				type: "GET",
-				dataType: "json",
+				dataType: "json", 
+				// jquery with dataType: "json" seems to parse the text, so we could also handle text and parse afterwards: 
+				// dataType: "text",
+				// var jsonData = JSON.parse(jsonText);
 				url: "http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=1",
-				success: function (data) 
+				success: function (jsonArrayObject) 
 				{
-					alert("Halsdfdsfdsalo");
+					// jsonArrayObject looks like this: 
+					// {"tags": [ {"answer":"Twitter", "count":"4"},{"answer":"Facebook", "count":"1"},{"answer":"Zanox Marketplace", "count":"2"} ]}
+					
+					var tagCloud = '';
+					
+					// create tags for cloud -> elements look like this: <tag rel="2">twitter</tag> 
+					for (var i=0; i<jsonArrayObject.tags.length; i++) {
+						tagCloud = tagCloud + '<tag rel="' + jsonArrayObject.tags[i].count + '">' + jsonArrayObject.tags[i].answer + '</tag> '
+					}
+				
+					// we can throw this our later!
+					var currentdate = new Date(); 
+					var datetime = "Last Sync: " + currentdate.getDate() + "/"
+					+ (currentdate.getMonth()+1)  + "/" 
+					+ currentdate.getFullYear() + " @ "  
+					+ currentdate.getHours() + ":"  
+					+ currentdate.getMinutes() + ":" 
+					+ currentdate.getSeconds();
+						
+					tagCloud = tagCloud + '<tag rel="8">' + currentdate + '</tag>'
+					
+					$("#tagcloud").html(tagCloud);
+					
+					$("#tagcloud tag").tagcloud({ 
+					 size: { 
+					   start: 30, 
+					   end: 100, 
+					   unit: 'px' 
+					 }, 
+					 color: { 
+					   start: "#FS2", 
+					   end: "#FS2" 
+					 } 
+					});
 				}
 			});
-		
-			$("#tagcloud").html('<tag rel="100">microsft word</tag> <tag rel="50">twitter</tag>');
-			
-			$("#tagcloud tag").tagcloud({ 
-			 size: { 
-			   start: 30, 
-			   end: 100, 
-			   unit: 'px' 
-			 }, 
-			 color: { 
-			   start: "#FS2", 
-			   end: "#FS2" 
-			 } 
-			});
+							
 		}, 5000)
 
 		</script>
 		
 		
 		<div id="tagcloud" style="width:400px;margin:0 auto;height:200px"> 
-		  
-		  <tag rel="2">microsft word</tag>
-		  <tag rel="8">facebook</tag>
-		  <tag rel="23">twitter</tag>
-		  <tag rel="11">affe</tag>
-		  
-		  <a href="#" rel="2">microsoft word</a> 
-		  <a href="#" rel="1">facebook</a>
-		  
-		  
-		  <a href="#" rel="7">google docs</a> 
-		  <a href="#" rel="13">yahoo</a> 
-		  <a href="#" rel="12">instagram</a> 
-		  <a href="#" rel="50">twitter</a> 
-		  <a href="#" rel="63">eieruhr</a> 
-		  <a href="#" rel="111">affe</a> 
-		  <a href="#" rel="43">dropbox</a>
-		  <a href="#" rel="30">bananane</a> 
-		  <a href="#" rel="2">blabla</a> 
-		  
-		  <a href="#" rel="2">apfel</a> 
-		  <a href="#" rel="1">birne</a>
-		  
-		  <a href="#" rel="1">giraffe</a>
-		  
-		  </div> 
+		 </div> 
 	
     </body>
 </html>
