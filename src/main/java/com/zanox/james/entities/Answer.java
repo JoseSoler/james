@@ -6,26 +6,27 @@ package com.zanox.james.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 /**
  *
  * @author jose.soler
  */
 @Entity
+@Table(name = "ANSWER", schema = "JAMES")
 public class Answer {
-    
-      
-    @Id @GeneratedValue
+     
+    @TableGenerator(name="answer_gen", schema = "JAMES", table = "ID_GEN", pkColumnName = "gen_name" , valueColumnName = "gen_val")
+    @Id @GeneratedValue(strategy = GenerationType.TABLE, generator = "answer_gen")
     private Integer id;
     
     private String answerText;
     
-    
-    private Integer questionId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "questionId", referencedColumnName = "id")
     private Question question;
@@ -56,14 +57,7 @@ public class Answer {
         this.answerText = answerText;
     }
 
-    public Integer getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
-    }
-
+   
     public Question getQuestion() {
         return question;
     }

@@ -4,10 +4,9 @@
  */
 package com.zanox.james.rest;
 
-import com.zanox.james.beans.JamesDummyService;
-import com.zanox.james.beans.JamesJPAService;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.exceptions.UnexistentQuestionException;
+import javax.inject.Inject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,7 +23,8 @@ import org.apache.log4j.Logger;
 @Path("")
 public class RestService {
     
-    private JamesService jps = new JamesDummyService();
+    @Inject
+    private JamesService jps;
     
     
     private Logger log = Logger.getLogger(RestService.class);
@@ -84,7 +84,9 @@ public class RestService {
 
         try {
 
-            return jps.getAnswerSummaryForQuestionId(id);
+            String result = jps.getAnswerSummaryForQuestionId(id);
+            
+            return result;
 
         } catch (UnexistentQuestionException ex) {
 
@@ -96,7 +98,25 @@ public class RestService {
 
     }
 
-   
+    @GET 
+    @Path("createQuestion")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String createQuestion(@QueryParam("id") String id, @QueryParam("question") String question ){
+       
+        try {
+        
+            return jps.createQuestion(id, question);
+        
+        } catch (Exception ex) {
+           
+            log.error("Error while creating question id: " + id + "  -  " + question);
+            log.error(ex.getMessage());
+            
+            return "KO";
+            
+        }
+        
+    }
 
    
 }

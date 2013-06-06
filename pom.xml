@@ -49,10 +49,10 @@
             <artifactId>derby</artifactId>
             <version>10.10.1.1</version>
             <type>jar</type>
-              <scope> test </scope>
+            <scope> test </scope>
         </dependency>
         
-          <dependency>
+        <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
             <version>10.10.1.1</version>
@@ -60,7 +60,7 @@
             <scope> test </scope>
         </dependency>
         
-           <dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
@@ -124,66 +124,61 @@
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.4.Final</version>
-                            
+                 
+            <!-- Comment the configuration out to deploy to localhost -->           
+                <configuration>
+                    <hostname>l-lab-01.zanox-live.de</hostname>
+                    <username>jamesDeployer</username>
+                    <password>james123</password>
+                    <skip>false</skip>
+                </configuration>    
                                
                 <executions>
                     
                     <execution>
                         
-                        <id>deploy_ear</id>
+                        <id>deploy_war</id>
                         <phase>install</phase>
                         
                         <goals>
                             <goal>deploy</goal>
                         </goals>
                         
-                        <!-- comment out the configuration to deploy to localhost  -->
                        
-                         <configuration>
-                            <hostname>l-lab-01.zanox-live.de</hostname>
-                            <username>jamesDeployer</username>
-                            <password>james123</password>
-                            <skip>false</skip>
-                        </configuration>    
-                        
-                        
                        
                     </execution>
                     
+                         
                     <execution>
                         <id>deploy_derby_driver</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>deploy-artifact</goal>
                         </goals>
                         <configuration>
                             <groupId>org.apache.derby</groupId>
                             <artifactId>derbyclient</artifactId>
-                            <version>10.9.1.0</version>
+                            <version>10.10.1.1</version>
                         </configuration>
                     </execution>
                     
                    
-                   <!--
                     <execution>
                         <id>add-datasource</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <configuration>
                             <address>subsystem=datasources,data-source=james_derby_datasource</address>
                             <resource>
                                 <enableResource>true</enableResource>
                                 <properties>
-                                    <connection-url>jdbc:derby://localhost:1527/james_db;create=true</connection-url>
-                                    
+                                    <connection-url>jdbc:derby://localhost:1527/james_db</connection-url>
                                     <jndi-name>java:jboss/datasources/james_derby_datasource</jndi-name>
-                                     
-                                     
                                     <enabled>true</enabled>
                                     <enable>true</enable>
                                     <pool-name>jamesPool</pool-name>
                                     <user-name>james</user-name>
                                     <password>james</password>
-                                    <driver-name>derbyclient-10.9.1.0.jar</driver-name>
+                                    <driver-name>derbyclient-10.10.1.1.jar</driver-name>
                                     <use-ccm>false</use-ccm>
                                 </properties>
                             </resource>
@@ -192,8 +187,8 @@
                             <goal>add-resource</goal>
                         </goals>
                     </execution>
-                 -->
-                   
+                    
+             
                 </executions>
             
             </plugin>
