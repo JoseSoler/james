@@ -35,6 +35,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
             success(function(data, status, headers, config) {
 				if (data.result == "success")
 				{
+					$rootScope.sharedVars.messages = "";
 					$location.path('/questionsuccess');
 				}
 				else

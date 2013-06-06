@@ -15,11 +15,12 @@ function QuestionConnectionController($scope, $location, $http, $templateCache, 
 				{
 					setCookie("currentQuestion",$scope.questionId,30);
 					$rootScope.sharedVars.qId = $scope.questionId;
+					$rootScope.sharedVars.messages = "";
 					
 					$location.path('/question'); 
 				}
 				else
-					rootScope.sharedVars.messages = data.message;
+					$rootScope.sharedVars.messages = data.message;
             }).
             error(function(data, status, headers, config) {
 				$rootScope.sharedVars.messages = "Request failed";
