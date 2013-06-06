@@ -8,10 +8,6 @@
 	</head>
     <body>
 		<script>
-		//$(document).ready(function() { 
-
-		//}); 
-		
 		function GetURLParameter(sParam)
 		{
 			var sPageURL = window.location.search.substring(1);
@@ -25,27 +21,17 @@
 				}
 			}
 		}
-
 		
 		setInterval(function() {
-		
-			
+			var tagCloud = '';
 		
 			$.ajax(
 			{
 				type: "GET",
 				dataType: "json", 
-				// jquery with dataType: "json" seems to parse the text, so we could also handle text and parse afterwards: 
-				// dataType: "text",
-				// var jsonData = JSON.parse(jsonText);
 				url: 'http://labs.zanox.com:8080/james/rest/getAnswerSummary?id=' + GetURLParameter('id'),
 				success: function (jsonArrayObject) 
-				{
-					// jsonArrayObject looks like this: 
-					// {"tags": [ {"answer":"Twitter", "count":"4"},{"answer":"Facebook", "count":"1"},{"answer":"Zanox Marketplace", "count":"2"} ]}
-					
-					var tagCloud = '';
-					
+				{	
 					// create tags for cloud -> elements look like this: <tag rel="2">twitter</tag> 
 					for (var i=0; i<jsonArrayObject.tags.length; i++) {
 						tagCloud = tagCloud + '<tag rel="' + jsonArrayObject.tags[i].count + '">' + jsonArrayObject.tags[i].answer + '</tag> '
@@ -75,12 +61,10 @@
 					   end: "#FS2" 
 					 } 
 					});
-				}
-			});
+				}		
+			});	
 							
 		}, 5000)
-		
-		
 
 		</script>
 		
