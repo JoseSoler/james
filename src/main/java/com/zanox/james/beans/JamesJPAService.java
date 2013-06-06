@@ -10,6 +10,7 @@ import com.zanox.james.entities.Answer;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.entities.Question;
 import com.zanox.james.exceptions.UnexistentQuestionException;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,7 +48,8 @@ public class JamesJPAService implements JamesService {
         
         if(aQuestion == null) throw new UnexistentQuestionException();
         
-        
+        answer = decorateAnswer(answer);
+                
         Answer anAnswer = new Answer();
         anAnswer.setAnswerText(answer);
         
@@ -77,7 +79,10 @@ public class JamesJPAService implements JamesService {
          
          if(aQuestion == null) throw new UnexistentQuestionException();
          
-         return QuestionToJsonConverter.convertQuestionAnswersToJson(aQuestion);
+         //compute the aggregates
+         Map aggregates = AnswerSummaryCalculator.calculate(aQuestion);
+         
+         return QuestionToJsonConverter.convertQuestionAnswersToJson(aggregates);
           
         
     }
@@ -109,8 +114,16 @@ public class JamesJPAService implements JamesService {
     
     }
 
+    private String decorateAnswer(String answer) {
+        
+        answer = answer.trim();
+        answer = answer.toLowerCase();
+        
+        return answer;
+        
+    }
 
-   
+    
     
     
     
