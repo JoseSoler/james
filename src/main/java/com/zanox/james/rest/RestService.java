@@ -4,6 +4,8 @@
  */
 package com.zanox.james.rest;
 
+import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.QuestionToJsonConverter;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.exceptions.UnexistentQuestionException;
 import javax.inject.Inject;
@@ -41,8 +43,9 @@ public class RestService {
         } catch (UnexistentQuestionException ex) {
            
             log.warn("Someone trying to get an unexistent question Id !! " + id);
+           
+            return QuestionToJsonConverter.generateUnexistentQuestionJsonError(id);
             
-            return "Unexistent Question Id";
             
         }
         
@@ -67,11 +70,10 @@ public class RestService {
         
         } catch (UnexistentQuestionException ex) {
             
-            String msg = "Someone trying to answer an unexistent question Id !! :\" + id ";
+             String msg = "Someone trying to answer an unexistent question Id !! :\" + id ";
             
-            log.warn(msg);
-           
-            return "{ " + id + ":\"KO\" }";
+             return QuestionToJsonConverter.generateUnexistentQuestionJsonError(id);
+         
         }
         
        
@@ -92,7 +94,7 @@ public class RestService {
 
             log.warn("Someone trying to get answers for an unexistent question Id !! " + id);
 
-            return "Unexistent Question Id";
+            return QuestionToJsonConverter.generateUnexistentQuestionJsonError(id);
 
         }
 
@@ -110,13 +112,14 @@ public class RestService {
         } catch (Exception ex) {
            
             log.error("Error while creating question id: " + id + "  -  " + question);
-            log.error(ex.getMessage());
             
-            return "KO";
+            return QuestionToJsonConverter.generateCreatingQuestionJsonError(id);
             
         }
         
     }
+
+        
 
    
 }

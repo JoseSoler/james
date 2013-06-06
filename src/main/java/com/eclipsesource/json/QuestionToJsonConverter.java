@@ -41,18 +41,16 @@ public class QuestionToJsonConverter {
     }
    
    
-    public static String generateJsonError(Question question, String errorMessage) {
+    public static String generateUnexistentQuestionJsonError(String id) {
         
-         JsonObject result = new JsonObject();
+           JsonObject result = new JsonObject();
          
-         result.add("id", question.getId());
-         result.add("question", question.getQuestionText());
-         result.add("result", "error");
-         result.add("message", errorMessage);
-         
-         
-         
-         return result.toString();
+            result.add("id", id);
+            result.add("question", "unknown");
+            result.add("result", "error");
+            result.add("message", "Unexistent question in the Database.");
+        
+            return result.toString();
          
             
     }
@@ -69,5 +67,19 @@ public class QuestionToJsonConverter {
          return result.toString();
          
             
+    }
+
+    public static String generateCreatingQuestionJsonError(String id) {
+    
+        
+           JsonObject result = new JsonObject();
+         
+            result.add("id", id);
+            result.add("question", "unknown");
+            result.add("result", "error");
+            result.add("message", "Error while creating new question.");
+        
+            return result.toString();
+    
     }
 }
