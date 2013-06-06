@@ -6,7 +6,7 @@ package com.zanox.james.entities;
 
 import com.eclipsesource.json.QuestionToJsonConverter;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.Ignore;
 
 /**
  *
@@ -15,7 +15,7 @@ import org.junit.Test;
 public class QuestionToJsonConverterTest {
     
     
-    @Test
+    @Ignore
     public void convertToJson(){
     
                
