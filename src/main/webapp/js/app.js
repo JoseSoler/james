@@ -1,10 +1,11 @@
-'use strict';
+messages'use strict';
 
 var JamesApp = angular.module('JamesApp', ['ngResource', 'JamesAppServices']);
 
 JamesApp.run(function ($rootScope) {
     $rootScope.sharedVars = {
-        qId : ""
+        qId : "",
+		messages : ""
     }
 });
 

@@ -12,7 +12,15 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	
 	$http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId, cache: $templateCache}).
 	success(function(data, status, headers, config) {
-		$scope.questionText = data.question;
+		if (data.result == "success")
+		{
+			$scope.questionText = data.question;
+		}
+		else
+		{
+			rootScope.sharedVars.messages = data.message;
+			$location.path('/aspen'); 
+		}
 	}).
 	error(function(data, status, headers, config) {
 		$rootScope.sharedVars.messages = "Request failed";
@@ -23,9 +31,16 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
     $scope.submitanswer = function() {
 			$scope.button=true;
 	
-	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/setAnswer?qId=' + $scope.questionId + '&answer=' + $scope.answer, cache: $templateCache}).
+	        $http({method: 'GET', url: 'http://labs.zanox.com:8080/james/rest/setAnswer?id=' + $scope.questionId + '&answer=' + $scope.answer, cache: $templateCache}).
             success(function(data, status, headers, config) {
-				$location.path('/questionsuccess'); 
+				if (data.result == "success")
+				{
+					$location.path('/questionsuccess');
+				}
+				else
+				{
+					$rootScope.sharedVars.messages = data.message;
+				}
             }).
             error(function(data, status, headers, config) {
                 $rootScope.sharedVars.messages = "Request failed";
