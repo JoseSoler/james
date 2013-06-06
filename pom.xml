@@ -141,15 +141,6 @@
                         <goals>
                             <goal>deploy</goal>
                         </goals>
-<<<<<<< HEAD
-                         <configuration>
-                            <hostname>l-lab-01.zanox-live.de</hostname>
-                            <username>jamesDeployer</username>
-                            <password>james123</password>
-                            <skip>false</skip>
-                        </configuration>    
-=======
->>>>>>> fc855779fd6eb67f80c6679b6e261d4abd3b3537
                     </execution>
                     
                    <!--
