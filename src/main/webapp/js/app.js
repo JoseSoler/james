@@ -1,4 +1,4 @@
-messages'use strict';
+'use strict';
 
 var JamesApp = angular.module('JamesApp', ['ngResource', 'JamesAppServices']);
 
