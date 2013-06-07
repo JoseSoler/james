@@ -1,25 +1,23 @@
 <!doctype html>
 <html lang="en" ng-app="JamesApp">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <meta http-equiv="Pragma" CONTENT="no-cache">
-  <meta http-equiv="Expires" CONTENT="-1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
   <title>James</title>
   <link rel="stylesheet" href="css/all.css">
   <link rel="stylesheet" href="css/all-mobile.css">
 </head>
 <body>
-
-<div class="content">
-	<div id="main">
-		<div id="header"></div> 
-		<div class="clear"></div>
-		{{sharedVars.messages}}
-		<div id="content">
-		<ng-view></ng-view>
-		</div>
-		<div class="clear"></div>
+<div id="main">
+	<div id="header"></div> 
+	<div id="messages">{{sharedVars.messages}}</div>
+	<div class="clear"></div>
+	<div id="content">
+	<ng-view></ng-view>
 	</div>
+	<div class="clear"></div>
 </div>
 
 <script src="lib/Scripts.js"></script>

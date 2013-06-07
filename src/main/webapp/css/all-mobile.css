@@ -1,9 +1,8 @@
-@media all and (max-width: 1000px) {
-	body{margin:0 auto;}
-	#main {width: 650px;}
+@media (max-width: 1000px) {
+	#main {width: 700px;}
 	.left{float:none;}
 	h1{font-size:30px; margin-bottom:7px;  }
-	#content{padding: 5px 15px 15px 10px;  width:600px;}
+	#content{padding: 5px 15px 15px 10px;  width:100%;}
 	.meeting_form{
 	padding:5px;
 	width:580px;
@@ -14,20 +13,21 @@
 }
 }
 
-@media all and (max-width: 350px) {   
+@media (max-width: 600px) {   
     body{font-size:24px; line-height: 1.2;}
-    #main {padding: 0px;width:340px;float:left;}
+    #main {padding: 0px;width:500px;float:left;}
     #header{margin:0 auto;}
 	h1{font-size:28px; color:#E0E0E0;}
 	.left{width:100%;float:none; }
     .main-img{margin: 0 0 5px 0;  }
-    #content{margin-top:4px;padding: 10px 15px 25px;    text-align: justify;background-color:black;color:white;    border-radius: 5px;width:280px;}
+    #content{padding: 10px 15px 25px;text-align: justify;border-radius: 5px;width:100%;}
 	.meeting_form{
 	padding:5px;
-	width:270px;
+	width:350px;
 	height:40px;
 	font-size:12px;
-	text-align:center;
+	text-align:left;
 	margin:0 auto;
 }
 }
+

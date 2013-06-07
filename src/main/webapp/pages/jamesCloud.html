@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,7 +5,7 @@
 		<script src="js/jquery-1.2.6.min.js" type="text/javascript" charset="utf-8"></script> 
 		<script src="js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
 	</head>
-    <body>
+    <body bgcolor="#ccc" width="100%">
 		<script>
 		function GetURLParameter(sParam)
 		{
@@ -22,7 +21,29 @@
 			}
 		}
 		
+		$(document).ready(function() {	
+			refreshCloud();
+			/*
+			$.ajax(
+			{
+				type: "GET",
+				dataType: "json", 
+				url: 'http://labs.zanox.com:8080/james/rest/getQuestion?id=' + GetURLParameter('id'),
+				success: function (jsonObject) 
+				{	
+					question = jsonObject.question;	
+					$("#question").html(question);
+				}	
+			});
+			*/
+		});
+		
 		setInterval(function() {
+			refreshCloud();
+		}, 5000)
+		
+		function refreshCloud()
+		{
 			var tagCloud = '';
 		
 			$.ajax(
@@ -46,20 +67,19 @@
 					   unit: 'px' 
 					 }, 
 					 color: { 
-					   start: "#FS2", 
-					   end: "#FS2" 
+					   start: "#000", 
+					   end: "#ff9900" 
 					 } 
 					});
 				}		
 			});	
-							
-		}, 5000)
+		}
 
 		</script>
 		
+		<div id="aspen_logo" style="width:480px;height:200px;margin-top:20px;margin-left:0px;"><img border="0" src="aspen_james.png"/></div>
 		
-		<div id="tagcloud" style="width:400px;margin:0 auto;height:200px"> 
-		 </div> 
+		<div id="tagcloud" style="width:80%;margin:0 auto;height:auto"></div> 
 	
     </body>
 </html>
