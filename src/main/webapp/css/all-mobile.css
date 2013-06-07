@@ -1,7 +1,7 @@
 @media (max-width: 1000px) {
 	#main {width: 700px;}
 	h1{font-size:30px; margin-bottom:7px;  }
-	#content{padding: 5px 15px 15px 10px;  width:100%;}
+	#content{padding:  20px 0 0 0;  width:100%;}
 	#messages{width:580px;}
 	.meeting_form{
 	padding:5px;
@@ -19,7 +19,7 @@
     #header{margin:0 auto;}
 	h1{font-size:28px; color:#fff;}
 	#messages{width:350px;}
-    #content{padding: 10px 15px 25px;text-align: justify;border-radius: 5px;width:100%;}
+    #content{padding: 20px 0 0 0 ;text-align: justify;border-radius: 5px;width:100%;}
 	.meeting_form{
 	padding:5px;
 	width:350px;
