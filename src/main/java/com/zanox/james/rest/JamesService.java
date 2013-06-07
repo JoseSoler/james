@@ -4,8 +4,13 @@
  */
 package com.zanox.james.rest;
 
+import com.zanox.james.entities.Answer;
+import com.zanox.james.exceptions.PersistenceException;
+import com.zanox.james.entities.Question;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.exceptions.UnexistentQuestionException;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -13,12 +18,23 @@ import com.zanox.james.exceptions.UnexistentQuestionException;
  */
 public interface JamesService {
 
-    public String getAnswerSummaryForQuestionId(String questionId) throws UnexistentQuestionException;
 
-    public String getQuestion(String questionId) throws UnexistentQuestionException;
+    public Question getQuestion(String questionId) throws UnexistentQuestionException;
 
-    public String setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException;
+    public Question setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException;
 
-    public String createQuestion(String id, String question);
+    public Question createQuestion(String id, String question) throws PersistenceException;
+    
+    public Question deleteAnswersForQuestion(String id) throws UnexistentQuestionException, PersistenceException;
+    
+    public Question deleteQuestion(String id) throws UnexistentQuestionException, PersistenceException; 
+    
+    public Map<String,String> getAnswerSummaryForQuestionId(String questionId) throws UnexistentQuestionException;
+
+    public List<Question> listAllQuestions() throws PersistenceException;
+
+    public List<Answer> listAllAnswersForQuestion(String id) throws UnexistentQuestionException, PersistenceException;
+
+    
     
 }

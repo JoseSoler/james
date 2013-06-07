@@ -5,15 +5,17 @@
 package com.zanox.james.beans;
 
 import com.zanox.james.rest.JamesService;
-import com.eclipsesource.json.QuestionToJsonConverter;
 import com.zanox.james.entities.Answer;
 import com.zanox.james.exceptions.UnacceptedAnswerException;
 import com.zanox.james.entities.Question;
+import com.zanox.james.exceptions.PersistenceException;
 import com.zanox.james.exceptions.UnexistentQuestionException;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.apache.log4j.Logger;
 
 /**
@@ -22,111 +24,147 @@ import org.apache.log4j.Logger;
  */
 @Stateless
 public class JamesJPAService implements JamesService {
-    
+
     @PersistenceContext(unitName = "james_persistence")
     private EntityManager em;
-    
     private Logger log = Logger.getLogger(JamesJPAService.class);
-    
+
     @Override
-    public String getQuestion(String questionId) throws UnexistentQuestionException {
-        
-       
+    public Question getQuestion(String questionId) throws UnexistentQuestionException {
+
         Question aQuestion = getQuestionById(questionId);
-        
-        if(aQuestion == null) throw new UnexistentQuestionException();
-        
-        
-        return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
-    
+
+        return aQuestion;
+
     }
-    
+
     @Override
-    public String setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException  {
-        
+    public Question setAnswer(String questionId, String answer) throws UnacceptedAnswerException, UnexistentQuestionException {
+
         Question aQuestion = getQuestionById(questionId);
-        
-        if(aQuestion == null) throw new UnexistentQuestionException();
-        
-        answer = decorateAnswer(answer);
-                
+
         Answer anAnswer = new Answer();
         anAnswer.setAnswerText(answer);
-        
+
         //build the relationships
         anAnswer.setQuestion(aQuestion);
         aQuestion.addAnswer(anAnswer);
-        
+
         try {
-        
+
             em.persist(aQuestion);
-            
-            return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
-            
-        
-        }catch(Exception ex){
-            
+
+            return aQuestion;
+
+
+        } catch (Exception ex) {
+
             throw new UnacceptedAnswerException();
         }
-        
-        
+
+
     }
 
     @Override
-    public String getAnswerSummaryForQuestionId(String id) throws UnexistentQuestionException{
+    public Map<String, String> getAnswerSummaryForQuestionId(String id) throws UnexistentQuestionException {
+
+        Question aQuestion = getQuestionById(id);
+
         
-         Question aQuestion = getQuestionById(id);
-         
-         if(aQuestion == null) throw new UnexistentQuestionException();
-         
-         //compute the aggregates
-         Map aggregates = AnswerSummaryCalculator.calculate(aQuestion);
-         
-         return QuestionToJsonConverter.convertQuestionAnswersToJson(aggregates);
-          
-        
+        //compute the aggregates
+        Map aggregates = AnswerSummaryCalculator.calculate(aQuestion);
+
+        return aggregates;
+
+
     }
-    
-  
+
     @Override
-    public String createQuestion(String questionId, String question) {
-        
-        log.info("Going to create new question: " + questionId + " - " + question);
-        
+    public Question createQuestion(String questionId, String question) throws PersistenceException {
+
+        log.info("Creating new question: " + questionId + " - " + question);
+
         Question aQuestion = new Question();
-        
+
         aQuestion.setId(questionId);
         aQuestion.setQuestionText(question);
-        
-        em.persist(aQuestion);
-        
-        return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
-        
-        
-    }
-    
-    
-      private Question getQuestionById(String id){
-        
-         Question aQuestion = em.find(Question.class, id);
-         
-         return  aQuestion;
-    
+
+        try {
+
+            em.persist(aQuestion);
+
+            return aQuestion;
+
+        } catch (Exception ex) {
+
+            throw new PersistenceException();
+        }
+
     }
 
-    private String decorateAnswer(String answer) {
+    @Override
+    public List<Question> listAllQuestions() throws PersistenceException{
+
+        Query qr = em.createQuery("SELECT q FROM question q");
+
+        List<Question> allQuestions = qr.getResultList();
+
+        return allQuestions;
+
+
+    }
+
+    @Override
+    public List<Answer> listAllAnswersForQuestion(String id) throws UnexistentQuestionException, PersistenceException{
         
-        answer = answer.trim();
-        answer = answer.toLowerCase();
+        Question aQuestion = getQuestionById(id);
         
-        return answer;
+        return aQuestion.getAnswers();
+        
+        
+    }
+
+    @Override
+    public Question deleteAnswersForQuestion(String id) throws UnexistentQuestionException, PersistenceException {
+      
+        Question aQuestion = getQuestionById(id);
+        
+        aQuestion.setAnswers(null);
+        
+        return aQuestion;
+        
+        
+    }
+    
+    @Override
+    public Question deleteQuestion(String id) throws UnexistentQuestionException, PersistenceException {
+        
+        Question aQuestion = getQuestion(id);
+        
+        em.remove(aQuestion);
+        
+        return aQuestion;
         
     }
 
     
-    
-    
-    
-    
-    
+
+    private Question getQuestionById(String id) throws UnexistentQuestionException {
+
+        Question aQuestion = em.find(Question.class, id);
+
+        if (aQuestion == null) {
+        
+            throw new UnexistentQuestionException();
+        }else {
+              return aQuestion;
+        }
+        
+      
+
+    }
+
+   
+
+   
 }

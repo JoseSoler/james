@@ -4,7 +4,9 @@
  */
 package com.eclipsesource.json;
 
+import com.zanox.james.entities.Answer;
 import com.zanox.james.entities.Question;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -81,5 +83,104 @@ public class QuestionToJsonConverter {
         
             return result.toString();
     
+    }
+
+    public static String generateAllQuestionsError() {
+        
+            JsonObject result = new JsonObject();
+         
+            result.add("id", "ALL");
+            result.add("question", "ALL");
+            result.add("result", "error");
+            result.add("message", "Error while generating all questions.");
+        
+            return result.toString();
+        
+    }
+
+    public static String generateAllQuestionsJson(List<Question> allQuestions) {
+       
+        JsonObject result = new JsonObject();
+        JsonArray  questions = new JsonArray();
+        
+        
+        for(Question aQuestion: allQuestions){
+        
+            JsonObject jsonQuestion = new JsonObject();
+         
+            jsonQuestion.add("id", aQuestion.getId());
+            jsonQuestion.add("question", aQuestion.getQuestionText());
+            
+            questions.add(jsonQuestion);
+        
+        }
+        
+        
+        
+        result.add("allQuestions", questions);
+        return result.toString();
+        
+    }
+
+    public static String generateAllAnswersJson(List<Answer> allAnswers) {
+       
+          JsonObject result = new JsonObject();
+          JsonArray  answers = new JsonArray();
+        
+        
+        for(Answer anAnswer: allAnswers){
+        
+            JsonObject jsonAnswer = new JsonObject();
+         
+            jsonAnswer.add("answer", anAnswer.getAnswerText());
+            
+            answers.add(jsonAnswer);
+        
+        }
+        
+        
+        
+        result.add("allAnswers", answers);
+        return result.toString();
+        
+        
+    }
+
+    public static String generateDeleteAnswersJson(Question aQuestion) {
+       
+        JsonObject result = new JsonObject();
+        
+        result.add("id", aQuestion.getId());
+        result.add("question", aQuestion.getQuestionText());
+        result.add("result", "sucess");
+        result.add("message", "All answers have been deleted from database.");
+
+        return result.toString();
+        
+    }
+
+    public static String generatePersistenceJsonError(String id) {
+
+        JsonObject result = new JsonObject();
+
+        result.add("id", id);
+        result.add("question", "unknown");
+        result.add("result", "error");
+        result.add("message", "Error while persisting the information.");
+
+        return result.toString();
+
+    }
+
+    public static String generateDeleteQuestionJson(Question aQuestion) {
+       
+        JsonObject result = new JsonObject();
+        
+        result.add("id", aQuestion.getId());
+        result.add("question", aQuestion.getQuestionText());
+        result.add("result", "sucess");
+        result.add("message", "Question have been deleted from database.");
+
+        return result.toString();
     }
 }
