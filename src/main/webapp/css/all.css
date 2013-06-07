@@ -3,6 +3,7 @@ body{
     font-size:14px;
     font-family: Arial;
 	color:#444;
+	margin:0 auto;
 }
 
 h1{
@@ -25,7 +26,7 @@ p {
 	height:50px;
 	font-size:24px;
 	color:white;
-	text-align:center;
+	text-align:left;
 	margin:0 auto;
 }
 blockquote{
@@ -51,6 +52,25 @@ h1{
     margin-right:40px;
 }
 
+
+#messages{
+	font-size:14px;
+	color:#ff9900;
+	width:970px;
+	background-color:#3d3d3d;
+	-moz-border-radius:5px; 
+	-webkit-border-radius: 5px; 
+	-khtml-border-radius: 5px; 
+	border-radius: 5px; 
+}
+#success{
+	width:460px;
+	margin:0 auto;
+	font-size:28px;
+	font-weight:bold;
+	color:#fff;
+}
+
 /* Content */
 
 #main{
@@ -61,9 +81,9 @@ h1{
 
 #header{
     background-image:url("../img/logo.png");
-    width:70px;
-    height:70px;
-    margin: 15px 0 15px 0;
+    width:480px;
+    height:190px;
+    margin: 5px 0 0 0;
 }
 
 #content{
@@ -77,8 +97,18 @@ h1{
 	border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 	height:500px;
+	width:980px;
+}
+#back_btn{
+	padding:25px 0 0 0;
+	margin:0;
+	
 }
 
+#bell_btn{
+	padding:25px 0 0 0;
+	margin:0 auto;
+	}
 .clear{
     clear:both; 
 }
