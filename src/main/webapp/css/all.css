@@ -57,13 +57,13 @@ h1{
 	font-size:14px;
 	color:#ff9900;
 	font-weight:bold;
-	width:970px;
+	width:920px;
 	background-color:#3d3d3d;
 	-moz-border-radius:5px; 
 	-webkit-border-radius: 5px; 
 	-khtml-border-radius: 5px; 
 	border-radius: 5px; 
-	padding:10px;
+	padding-left:5px;
 	margin:0 auto;
 }
 #success{
