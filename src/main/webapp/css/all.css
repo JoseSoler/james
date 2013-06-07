@@ -91,10 +91,7 @@ h1{
 
 #content{
     padding:15px 15px 35px 30px;
-    background-color:ccc;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));
-	background: -moz-linear-gradient(top,  #ccc,  #999);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc', endColorstr='#999');
+    background-color:#999;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px;
