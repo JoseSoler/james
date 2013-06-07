@@ -1,5 +1,5 @@
-@media (max-width: 1000px) {
-	#main {width: 700px;}
+@media (min-device-width: 1000px) {
+	#main {width: 800px;}
 	.left{float:none;}
 	h1{font-size:30px; margin-bottom:7px;  }
 	#content{padding: 5px 15px 15px 10px;  width:100%;}
@@ -13,9 +13,9 @@
 }
 }
 
-@media (max-width: 600px) {   
+@media (min-device-width: 600px) {   
     body{font-size:24px; line-height: 1.2;}
-    #main {padding: 0px;width:500px;float:left;}
+    #main {padding: 0px;width:580px;float:left;}
     #header{margin:0 auto;}
 	h1{font-size:28px; color:#E0E0E0;}
 	.left{width:100%;float:none; }
