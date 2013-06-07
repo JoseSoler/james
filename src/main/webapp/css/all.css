@@ -40,18 +40,6 @@ h1{
     text-shadow: 2px 2px #333;
 }
 
-.main-img{
-    margin: 0 40px 22px 0;
-    float:left;
-    max-width: 100%;
-}
-
-.left{
-    float:left;
-    width:560px;
-    margin-right:40px;
-}
-
 
 #messages{
 	font-size:14px;
@@ -80,6 +68,11 @@ h1{
     margin:0 auto;
     padding: 10px;
     width:1000px;
+	background-color:#999;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #header{
@@ -91,11 +84,6 @@ h1{
 
 #content{
     padding:15px 15px 35px 30px;
-    background-color:#999;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
 	height:auto;
 	width:980px;
 }
