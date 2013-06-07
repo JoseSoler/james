@@ -96,7 +96,7 @@ h1{
     border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-	height:500px;
+	height:auto;
 	width:980px;
 }
 #back_btn{
