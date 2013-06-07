@@ -3,6 +3,7 @@
 	.left{float:none;}
 	h1{font-size:30px; margin-bottom:7px;  }
 	#content{padding: 5px 15px 15px 10px;  width:100%;}
+	#messages{width:580px;}
 	.meeting_form{
 	padding:5px;
 	width:580px;
@@ -20,6 +21,7 @@
 	h1{font-size:28px; color:#E0E0E0;}
 	.left{width:100%;float:none; }
     .main-img{margin: 0 0 5px 0;  }
+	#messages{width:350px;}
     #content{padding: 10px 15px 25px;text-align: justify;border-radius: 5px;width:100%;}
 	.meeting_form{
 	padding:5px;
