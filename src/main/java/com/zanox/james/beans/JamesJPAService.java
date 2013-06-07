@@ -105,7 +105,7 @@ public class JamesJPAService implements JamesService {
     @Override
     public List<Question> listAllQuestions() throws PersistenceException{
 
-        Query qr = em.createQuery("SELECT q FROM question q");
+        Query qr = em.createQuery("SELECT q FROM Question q");
 
         List<Question> allQuestions = qr.getResultList();
 
@@ -129,7 +129,9 @@ public class JamesJPAService implements JamesService {
       
         Question aQuestion = getQuestionById(id);
         
-        aQuestion.setAnswers(null);
+        aQuestion.getAnswers().clear();
+               
+        em.merge(aQuestion);
         
         return aQuestion;
         

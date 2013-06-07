@@ -121,7 +121,9 @@ public class RestService {
         try {
         
             id = decorateTheReceivedId(id);
-             
+            
+            if(question == null || question.length() == 0) throw new Exception(); //no question with NO question text
+            
             Question aQuestion = jps.createQuestion(id, question);
             
             return QuestionToJsonConverter.generateJsonSuccess(aQuestion);
@@ -136,7 +138,7 @@ public class RestService {
     }
     
     @GET 
-    @Path("allQuestions")
+    @Path("getAllQuestions")
     @Produces(MediaType.TEXT_PLAIN)
     public String listAllQuestions(){
        
@@ -156,7 +158,7 @@ public class RestService {
     }
     
     @GET 
-    @Path("allAnswersForQuestion")
+    @Path("getAllAnswersForQuestion")
     @Produces(MediaType.TEXT_PLAIN)
     public String listAllAnswersForQuestions(@QueryParam("id") String id){
        
