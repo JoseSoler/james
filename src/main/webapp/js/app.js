@@ -33,6 +33,7 @@ JamesApp.config(function($routeProvider) {
         templateUrl: 'views/question.html'
       }).
       when('/questionsuccess', {
+		controller: 'QuestionSuccessController',
         templateUrl: 'views/questionsuccess.html'
       });
 	

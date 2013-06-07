@@ -28,6 +28,10 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	});	
 	/* ------------------------------------------------ */
 	
+	$scope.back = function() {
+		$location.path('/aspen'); 
+	}
+	
     $scope.submitanswer = function() {
 			$scope.button=true;
 	
