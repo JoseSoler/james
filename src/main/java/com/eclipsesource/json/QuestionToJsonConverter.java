@@ -50,7 +50,7 @@ public class QuestionToJsonConverter {
             result.add("id", id);
             result.add("question", "unknown");
             result.add("result", "error");
-            result.add("message", "Unexistent question in the Database.");
+            result.add("message", "Wrong question code.");
         
             return result.toString();
          
