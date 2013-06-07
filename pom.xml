@@ -125,7 +125,7 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.4.Final</version>
                  
-            <!-- Comment the configuration out to deploy to localhost         
+            <!-- Comment the configuration out to deploy to localhost -->        
                 <configuration>
                     <hostname>l-lab-01.zanox-live.de</hostname>
                     <username>jamesDeployer</username>
@@ -133,7 +133,7 @@
                     <skip>false</skip>
                 </configuration>    
                         
-                        -->
+                        
                                      
                 <executions>
                     
