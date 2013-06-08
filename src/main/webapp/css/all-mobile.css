@@ -1,51 +1,31 @@
 @media (max-width: 1000px) {
-	#main {width: 90%;}
+	#main {width: 99%;}
 	h1{font-size:30px; margin-bottom:7px;  }
 	#content{padding: 10px 0 0 25px;  width:100%;}
 	#messages{width:580px;}
-	.meeting_form{
-	padding:5px;
-	width:580px;
-	height:40px;
-	font-size:18px;
-	text-align:center;
-	margin:0 auto;
-}
+	.meeting_form{padding:5px;width:85%;height:40px;font-size:18px;text-align:center;margin:0 auto;
+	}
 }
 
 @media (max-width: 800px) {   
     body{font-size:24px; line-height: 1.2;}
-    #main {padding: 0px;width:90%;float:left;}
-    #header{margin:0 auto;}
+    #main {padding: 0px;width:99%;float:left;}
 	h1{font-size:28px; color:#fff;}
 	#messages{width:600px;}
     #content{padding: 10px 0 0 25px;text-align: justify;border-radius: 5px;width:100%;}
-	.meeting_form{
-	padding:5px;
-	width:600px;
-	height:40px;
-	font-size:12px;
-	text-align:left;
-	margin:0 auto;
-}
+	.meeting_form{padding:5px;width:85%;height:40px;font-size:12px;text-align:left;margin:0 auto;
+	}
 }
 
 
 
 @media (max-width: 600px) {   
     body{font-size:24px; line-height: 1.2;}
-    #main {padding: 0px;width:90%;float:left;}
-    #header{margin:0 auto;}
+    #main {padding: 0px;width:99%;float:left;}
 	h1{font-size:28px; color:#fff;}
 	#messages{width:400px;}
     #content{padding: 10px 0 0 25px;text-align: justify;border-radius: 5px;width:100%;}
-	.meeting_form{
-	padding:5px;
-	width:400px;
-	height:40px;
-	font-size:12px;
-	text-align:left;
-	margin:0 auto;
-}
+	.meeting_form{padding:5px;width:85%;height:40px;font-size:12px;text-align:left;margin:0 auto;
+	}
 }
 
