@@ -30,6 +30,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	
 	$scope.showBackButton = sessionStorage.showBackButton;
 	
+	/* ---------- Get the question text ---------- */
 	$http({method: 'GET', url: encodeURI(sessionStorage.restURL + 'getQuestion?id=' + $scope.questionId), cache: $templateCache}).
 	success(function(data, status, headers, config) {
 		if (data.result == "success")
