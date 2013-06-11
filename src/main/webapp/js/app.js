@@ -1,5 +1,11 @@
 'use strict';
 
+/* -------- GLOBAL SETTING -------- */
+
+sessionStorage.restURL = "http://labs.zanox.com:8080/james/rest/";
+
+/* -------------------------------- */
+
 var JamesApp = angular.module('JamesApp', ['ngResource', 'JamesAppServices']);
 
 JamesApp.run(function ($rootScope) {

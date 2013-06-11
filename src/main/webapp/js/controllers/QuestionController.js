@@ -5,12 +5,12 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	$scope.button=false;
 	
 	/* ----------- Initialize the question ----------- */
-	
 	if ($routeParams.questionId != "" && $routeParams.questionId != null)
 	{
-		$scope.questionId = $routeParams.questionId;
-	
-		setCookie("currentQuestion",$scope.questionId,30);
+		sessionStorage.questionId = $routeParams.questionId;
+		sessionStorage.showBackButton = false;
+		$scope.questionId = sessionStorage.questionId;
+
 		$rootScope.sharedVars.qId = $scope.questionId;
 		$rootScope.sharedVars.messages = "";
 
@@ -20,12 +20,17 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 	{
 		$scope.showBackButton = true;
 		if ($rootScope.sharedVars.qId == "")
-			$scope.questionId = getCookie("currentQuestion");
+			$scope.questionId = sessionStorage.questionId;
 		else
 			$scope.questionId = $rootScope.sharedVars.qId;
 	}
 	
-	$http({method: 'GET', url: encodeURI('http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId), cache: $templateCache}).
+	/* --------- Display "back" button  --------- */
+	if (sessionStorage.showBackButton == null) sessionStorage.showBackButton = true;
+	
+	$scope.showBackButton = sessionStorage.showBackButton;
+	
+	$http({method: 'GET', url: encodeURI(sessionStorage.restURL + 'getQuestion?id=' + $scope.questionId), cache: $templateCache}).
 	success(function(data, status, headers, config) {
 		if (data.result == "success")
 		{
@@ -50,7 +55,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
     $scope.submitanswer = function() {
 			$scope.button=true;
 	
-	        $http({method: 'GET', url: encodeURI('http://labs.zanox.com:8080/james/rest/setAnswer?id=' + $scope.questionId + '&answer=' + $scope.answer), cache: $templateCache}).
+	        $http({method: 'GET', url: encodeURI(sessionStorage.restURL + 'setAnswer?id=' + $scope.questionId + '&answer=' + $scope.answer), cache: $templateCache}).
             success(function(data, status, headers, config) {
 				if (data.result == "success")
 				{
