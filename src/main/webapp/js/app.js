@@ -28,6 +28,10 @@ JamesApp.config(function($routeProvider) {
         controller: 'QuestionConnectionController',
         templateUrl: 'views/questionconnection.html'
       }).
+      when('/question/:questionId', {
+        controller: 'QuestionController',
+        templateUrl: 'views/question.html'
+      }).
       when('/question', {
         controller: 'QuestionController',
         templateUrl: 'views/question.html'

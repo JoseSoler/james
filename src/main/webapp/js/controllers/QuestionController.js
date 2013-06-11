@@ -1,14 +1,29 @@
 'use strict';
 
 JamesApp.controller('QuestionController',
-function QuestionController($scope, $location, $http, $templateCache, $rootScope) {
+function QuestionController($scope, $location, $http, $templateCache, $rootScope, $routeParams) {
 	$scope.button=false;
 	
 	/* ----------- Initialize the question ----------- */
-	if ($rootScope.sharedVars.qId == "")
-		$scope.questionId = getCookie("currentQuestion");
+	
+	if ($routeParams.questionId != "" && $routeParams.questionId != null)
+	{
+		$scope.questionId = $routeParams.questionId;
+	
+		setCookie("currentQuestion",$scope.questionId,30);
+		$rootScope.sharedVars.qId = $scope.questionId;
+		$rootScope.sharedVars.messages = "";
+
+		$scope.showBackButton = false;
+	}
 	else
-		$scope.questionId = $rootScope.sharedVars.qId;
+	{
+		$scope.showBackButton = true;
+		if ($rootScope.sharedVars.qId == "")
+			$scope.questionId = getCookie("currentQuestion");
+		else
+			$scope.questionId = $rootScope.sharedVars.qId;
+	}
 	
 	$http({method: 'GET', url: encodeURI('http://labs.zanox.com:8080/james/rest/getQuestion?id=' + $scope.questionId), cache: $templateCache}).
 	success(function(data, status, headers, config) {
@@ -18,7 +33,7 @@ function QuestionController($scope, $location, $http, $templateCache, $rootScope
 		}
 		else
 		{
-			rootScope.sharedVars.messages = data.message;
+			$rootScope.sharedVars.messages = data.message;
 			$location.path('/aspen'); 
 		}
 	}).
