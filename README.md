@@ -6,6 +6,12 @@ This project is based in maven for the build (and deploy) process, hence you nee
 
 1) Maven    http://maven.apache.org/download.cgi
 
-2) JBoss AS 7 (only if you want a running local enviroment)
+2) JBoss AS 7 ( wget http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip )
 
-3) Derby database (included in the Java JDK)
+2.1) Create management user in jboss (jamesDeployer/james123)
+
+3) Derby database ( wget http://artfiles.org/apache.org//db/derby/db-derby-10.10.1.1/db-derby-10.10.1.1-bin.tar.gz )
+
+3.1) ij> run 'jamesDDL.sql';
+
+
