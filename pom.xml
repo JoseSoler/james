@@ -125,15 +125,15 @@
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>7.4.Final</version>
                  
-            <!-- Comment the configuration out to deploy to localhost -->        
                 <configuration>
-                    <hostname>l-lab-01.zanox-live.de</hostname>
+                    <hostname>l-lab-01.zanox-live.de</hostname> -->
+                    <!-- <hostname>localhost</hostname> -->
                     <username>jamesDeployer</username>
                     <password>james123</password>
                     <skip>false</skip>
-                </configuration>    
+                </configuration>
                         
-                        
+
                                      
                 <executions>
                     
@@ -144,7 +144,6 @@
                         </goals>
                     </execution>
                     
-                   <!--
                     <execution>
                         <id>deploy_derby_driver</id>
                         <phase>package</phase>
@@ -154,7 +153,6 @@
                         <configuration>
                             <groupId>org.apache.derby</groupId>
                             <artifactId>derbyclient</artifactId>
-                            <version>10.10.1.1</version>
                         </configuration>
                     </execution>
                     
@@ -183,8 +181,7 @@
                             <goal>add-resource</goal>
                         </goals>
                     </execution>
-                    -->
-             
+
                 </executions>
             
             </plugin>

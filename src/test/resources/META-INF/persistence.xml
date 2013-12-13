@@ -1,33 +1,37 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
                                  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-    
+
     <persistence-unit name="james_persistence" transaction-type="RESOURCE_LOCAL">
-  
+
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        
-       <class> com.zanox.james.entities.Answer</class>             
+
+        <class>com.zanox.james.entities.Answer</class>
         <class>com.zanox.james.entities.Question</class>
-      
-         
+
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
-        
+
         <properties>
-            
-             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
-             <property name="hibernate.show_sql" value="true"/>
-             <property name="hibernate.format_sql" value="true" />
-        
-       <!--     <property name="hibernate.connection.url" value="jdbc:derby:memory:james_db;create=true"/> -->
-          <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/james_db"/>
+
+            <property name="hibernate.connection.autoReconnect" value="true" />
+            <property name="hibernate.connection.autoReconnectForPools" value="true" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+           <!-- <property name="hibernate.connection.url" value="jdbc:derby:memory:james_db;create=true"/> -->
+
+            <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/james_db"/>
             <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.connection.username" value="james_app"/>
             <property name="hibernate.connection.password" value="james_app"/>
+
         </properties>
-      
-    
+
+
     </persistence-unit>
 </persistence>
