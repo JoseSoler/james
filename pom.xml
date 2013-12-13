@@ -126,8 +126,8 @@
                 <version>7.4.Final</version>
                  
                 <configuration>
-                   <!-- <hostname>l-lab-01.zanox-live.de</hostname> -->
-                    <hostname>localhost</hostname>
+                    <hostname>l-lab-01.zanox-live.de</hostname> -->
+                    <!-- <hostname>localhost</hostname> -->
                     <username>jamesDeployer</username>
                     <password>james123</password>
                     <skip>false</skip>
