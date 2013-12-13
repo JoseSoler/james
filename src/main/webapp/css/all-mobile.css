@@ -1,7 +1,7 @@
 @media (max-width: 1000px) {
 	#main {width: 100%;}
 	h1{font-size:30px; margin-bottom:7px;  }
-	#header{background-image:url("../img/zanox-app-800x254.jpg"); width:800px;height:254px;background-repeat:no-repeat;}
+	#header{background-image:url("../img/zanox_james.png"); width:800px;height:254px;background-repeat:no-repeat;}
 	#messages{width:580px;}
 	.meeting_form{padding:5px;width:800px;height:40px;font-size:18px;text-align:center;margin:0 auto;}
 	
@@ -9,7 +9,7 @@
 
 @media (max-width: 800px) {   
     body{font-size:24px; line-height: 1.2;}
-	#header{background-image:url("../img/zanox-app-600x191.jpg"); width:600px;height:191px;background-repeat:no-repeat;}
+	#header{background-image:url("../img/zanox_james.png"); width:600px;height:191px;background-repeat:no-repeat;}
     #main {padding: 0px;width:100%;float:left;}
 	h1{font-size:28px; color:#444;}
 	#messages{width:600px;}
@@ -19,7 +19,7 @@
 
 @media (max-width: 600px) {   
     body{font-size:24px; line-height: 1.2;}
-	#header{background-image:url("../img/zanox-app-400x158.png"); width:400px;height:158px;background-repeat:no-repeat;}
+	#header{background-image:url("../img/zanox_james.png"); width:400px;height:158px;background-repeat:no-repeat;}
     #main {padding: 0px;width:100%;float:left;}
 	h1{font-size:28px; color:#444;}
 	#messages{width:600px;}
@@ -31,7 +31,7 @@
 
 @media (max-width: 500px) {   
     body{font-size:24px; line-height: 1.2;}
-	#header{background-image:url("../img/zanox-app-300x118.png"); width:300px;height:118px;background-repeat:no-repeat;}
+	#header{background-image:url("../img/zanox_james_small.png"); width:300px;height:118px;background-repeat:no-repeat;}
     #main {padding: 0px;width:100%;float:left;}
 	h1{font-size:28px; color:#444;}
 	#messages{width:300px;}

@@ -75,11 +75,11 @@ h1{
 	text-align:center;
 }
 #header{
-    background-image:url("../img/zanox-app-950x302.jpg");
-    width:950px;
-    height:302px;
+    background-image:url("../img/zanox_james.png");
+    width:400px;
+    height:158px;
 	background-repeat:no-repeat;
-    margin: 0 auto;
+    margin: 0;
 }
 
 #content{
